@@ -30,9 +30,7 @@ twitter_username: jekyllrb
 github_username:  jekyll
 
 # Build settings
-theme: jekyll-text-theme
-text_skin: default
-highlight_theme: default 
+theme: minima
 plugins:
   - jekyll-feed
 
