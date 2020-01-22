@@ -24,8 +24,8 @@ description: > # this means to ignore newlines until "Language & timezone"
   This is my personal blog where I share content about things going on my life.
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://www.evanhorsley.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username: evanhorsleym
+github_username:  evy0311
 
 # Build settings
 theme: minima
