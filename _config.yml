@@ -19,10 +19,10 @@ theme: jekyll-text-theme # Gem-based Jekyll Themes
 text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
-baseurl : "" # does not include hostname
-title   : Evan's Journal
+baseurl : # does not include hostname
+title   : Your Site Title
 description: > # this means to ignore newlines until "Language & timezone"
-  This is my personal blog where I share content about things going on my life.
+  Your Site Description
 
 
 ## => Language and Timezone
@@ -35,10 +35,10 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : Evan Horsley
+  name      : Your Name
   url       :
   avatar    : # path or url of avatar image (square)
-  bio       : Software Developer and Student
+  bio       : I am an amazing person.
   email     :
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
@@ -55,8 +55,8 @@ author:
 
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
-repository: evy0311/blog
-repository_tree: gh-pages
+repository: user_name/repo_name
+repository_tree: master
 
 
 ## => Paths
