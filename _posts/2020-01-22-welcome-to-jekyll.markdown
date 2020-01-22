@@ -1,29 +1,17 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Welcome to my blog!"
 date:   2020-01-22 13:43:39 -0500
-categories: jekyll update
+categories: blog new
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+Hello, friends! Today I am taking the plunge and have decided to start removing myself from certain social media websites.
 
-Jekyll requires blog post files to be named according to the following format:
+This decision has been a long time in the making, especially because I use sites like Facebook to connect with other family members. However, I have been spending too much time on these things, and often get stressed out due to the content on them. These sites are a great way to connect with family and friends, but I have decided to remove myself from them.
 
-`YEAR-MONTH-DAY-title.MARKUP`
+The biggest part of my decision in this entire thing was I want to make sure my family and friends are still able to stay in touch with me and see what I am doing in my life. Therefore, I am moving all of the content I normally would post on Facebook, etc., to here. This will be my blog that I write on occasionally showcasing cool things I've gotten the chance to do, life updates, etc. 
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+I'm still in the process of setting it all up. I need to setup comments, setup notifications, and configure the theme and layout a bit more. This shouldn't take too long, but I'll likely write about it in an upcoming post for those of you that are new to this sort of thing.
 
-Jekyll also offers powerful support for code snippets:
+As always, I'll still have my phone and phone number, so those of you that have it can always reach out whenever. For those that have questions, feel free to reach out to me via e-mail currently here: <evan@evanhorsley.com>. 
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+I hope that moving away from sites like Facebook not only removes a factor of stress in my life, but also frees up more time to spend with people, too. I love hanging with friends and family in person, and want to remove distractions such as Facebook from my life so I am able to do those things more. Thanks for reading!
