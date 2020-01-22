@@ -1,1 +1,1 @@
-window.TEXT_SEARCH_DATA={'posts':[{'title':"Welcome to my blog!",'url':"/blog/blog/new/2020/01/22/welcome-to-jekyll.html"}]};
+window.TEXT_SEARCH_DATA={'posts':[{'title':"Welcome to my blog!",'url':"/blog/new/2020/01/22/welcome-to-jekyll.html"}]};
