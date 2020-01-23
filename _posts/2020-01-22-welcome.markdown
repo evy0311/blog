@@ -1,5 +1,6 @@
 ---
 title:  "Welcome to my blog!"
+comments: true
 date:   2020-01-22 13:43:39 -0500
 categories: blog new
 ---
