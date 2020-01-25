@@ -17,7 +17,7 @@ Last night, Gena and I went out on a date night. We try to make it a thing to go
 
 We decided to go to Melt Bar and Grilled, a really cool restaraunt that we've been to before. Melt has awesome food, of which they are most known for their grilled cheese. We got ready and took off, makingo ur way through the crappy, rainy weather that Columbus has brought upon us for this weekend.
 
-We arrive, thankfully at a decent hour with no wait. While walking in, the most memorable part of our night occured: Gena fell. Not just a trip and fall, but she fell for a solid ten seconds. I think her heals coupled with the fact that the floor was wet are what caused this, but it was too funny to not mention here. She's okay, and thankfully never made it all the way to the gorun (a kind stranger helped me catch her). But I definitely did not let her forget about this, as we laughed randomly throughout the night about it.
+We arrive, thankfully at a decent hour with no wait. While walking in, the most memorable part of our night occured: Gena fell. Not just a trip and fall, but she fell for a solid ten seconds. I think her heals coupled with the fact that the floor was wet are what caused this, but it was too funny to not mention here. She's okay, and thankfully never made it all the way to the ground (a kind stranger helped me catch her). But I definitely did not let her forget about this, as we laughed randomly throughout the night about it.
 
 My favorite thing to get at Melt is their Mac and Cheese grilled cheese. It is one of the most interesting foods I have ever eaten, and one of the most American foods you can think of. Add Bacon, and you're set! For those that haven't been to Melt, I highly recommend it, as their food, service, and atmosphere are awesome!
 
