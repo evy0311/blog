@@ -8,7 +8,7 @@ categories: honda civic reverse engineering hack hacking car auto automotive
 
 <!-- Content -->
 
-I recently had the pleasure of acquiring a dream car of mine. The car is a manual. It comes in a sporty blue color has a nice but subtle wing on the back. It has a nice black interior with red lined seats and carbon fiber accents on the dash.
+I recently had the pleasure of acquiring a dream car of mine. The car is a manual. It comes in a sporty blue color, has a nice but subtle wing on the back. It has a nice black interior with red lined seats and carbon fiber accents on the dash.
 
 If you’d have guessed a Lamborghini or some other similar car, you would be very wrong. No, the car I’ve purchased is in fact a 2014 Honda Civic Si. That’s right, the last Civic with true VTEC. 
 
