@@ -21,10 +21,9 @@
 title: Evan's Journal
 email: evan@evanhorsley.com
 description: > # this means to ignore newlines until "Language & timezone"
-  This is my personal blog where I share content about things going on my life.
+  This is my personal blog where I share stuff about my life and projects I'm working on.
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://www.evanhorsley.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: evanhorsleym
 github_username:  evy0311
 
 # Build settings

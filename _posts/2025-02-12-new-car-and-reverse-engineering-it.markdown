@@ -13,7 +13,7 @@ I recently had the pleasure of acquiring a dream car of mine. The car is a manua
 If you’d have guessed a Lamborghini or some other similar car, you would be very wrong. No, the car I’ve purchased is in fact a 2014 Honda Civic Si. That’s right, the last Civic with true VTEC. 
 
 ![2014 Honda Civic Si](https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/14q2/584476/2014-honda-civic-si-sedan-test-review-car-and-driver-photo-597226-s-original.jpg "2014 Honda Civic Si")
-Photo credit: Car and Driver
+_Photo credit: Car and Driver_
 
 Now, there isn't really anything about this car that I don't love. It's super practical, allowing me to haul around my wife and our son in his car seat, along with a stroller, groceries, two other people, and probably even more. It gets pretty good gas mileage (when I'm not totally mashing the throttle to experience that sweet VTEC), and cost of ownership is very low. The interior is very comfortable, and looks modern, for a now 11-year-old car. 
 
