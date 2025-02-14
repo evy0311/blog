@@ -25,6 +25,7 @@ description: > # this means to ignore newlines until "Language & timezone"
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://www.evanhorsley.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  evy0311
+timezone: America/New_York
 
 permalink: /:year/:month/:day/:title/
 
