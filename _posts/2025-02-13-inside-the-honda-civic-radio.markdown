@@ -14,7 +14,7 @@ post, go ahead and look [here](https://evanhorsley.com/blog/2025/02/12/new-car-a
 The first step was a complete teardown to view the inner workings of the radio and see what is powering this thing.
 I was also looking for some sort of serial or debug port, but more on that later. Enough chatter, lets look at the inside of this thing!
 
-![Top layer of the radio showing various connectors, SD card slot, and fan header](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%202.jpeg)
+![Top layer of the radio showing various connectors, SD card slot, and fan header](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%201.jpeg)
 
 The first picture here is the first/top layer of the radio. We can see several things at first glance. In the bottom left, there is a 6 pin wire that
 goes down to the lower board. There are also two ribbon cables that connect the upper and lower boards. At the bottom middle we can see the display
@@ -23,21 +23,21 @@ SD card slot on the left side. In the very middle of the board is an empty conne
 two pin header is for a fan.
 
 
-![Underside of upper section showing SoC, NAND flash chips, RAM, and audio processing chips](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2020.jpeg)
+![Underside of upper section showing SoC, NAND flash chips, RAM, and audio processing chips](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2019.jpeg)
 
 This is the underside of the upper section. This is the real brains of the radio here, with a SoC living in the middle of the board. We
 can also see two NAND flash chips, a RAM module, and a couple chips related to audio processing and power handling. Other than that, quite
 boring.
 
 
-![Lower section of radio showing audio processing hardware and connectors](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%207.jpeg)
+![Lower section of radio showing audio processing hardware and connectors](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%206.jpeg)
 
 This is the lower section of the radio. We can again see the 6 pin connector that goes to the upper board, as well as both bottom ribbon cables. There is also quite a bit
 of audio processing hardware here mostly in the top left of the image. There are two main chips we can see, but more on those later. There
 is also an empty ribbon cable connector towards the bottom right in beige that I cannot identity its use. It was unused when I opened it up.
 
 
-![Underside of lower section](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2012.jpeg)
+![Underside of lower section](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2011.jpeg)
 
 This is the underside of the lower section. Not too much going on here, really. 
 
