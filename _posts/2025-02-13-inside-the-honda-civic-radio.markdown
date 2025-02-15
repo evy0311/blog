@@ -51,7 +51,7 @@ The processor appears to be a Renesas R8A77780. I unfortunately cannot find much
 power chip. 
 
 
-### The RAM
+### The ROM
 ![Macronix MX29GL640ELT2I-70G flash memory chip](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2026.jpeg)
 
 The flash memory appears to be a Macronix MX29GL640ELT2I-70G memory chip. It's a NOR flash memory device from Macronix's GL640E family with the following key specifications:
@@ -59,10 +59,10 @@ The flash memory appears to be a Macronix MX29GL640ELT2I-70G memory chip. It's a
 - 70ns access time (indicated by the -70 in the part number)
 - Temperature rated for industrial use (indicated by the I in the part number)
 
-### The ROM
+### The RAM
 ![Micron D9PTJ ROM chip](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2028.jpeg)
 
-The system storage/ROM appears to be made by Micron, model D9PTJ. I can't find much online about this though, but will keep digging.
+The system RAM appears to be made by Micron, model D9PTJ. I can't find much online about this though, but will keep digging.
 
 ### The display
 ![Display assembly with Alps UGKZ2-E06A WiFi/Bluetooth chip](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2029.jpeg)
