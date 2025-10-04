@@ -8,7 +8,7 @@ categories: honda civic reverse engineering hack hacking car auto automotive
 
 <!-- Content -->
 
-Well, for almost a year I had the Joying android headunit in my 2014 Honda Civic Si. This was one of the
+Well, for almost a year I had the Joying android headunit (Option 3 mentioned in my post [here](https://evanhorsley.com/blog/2025/02/12/new-car-and-reverse-engineering-it/)) in my 2014 Honda Civic Si. This was one of the
 options I had mentioned in my original post a bit back. It was great, but I really missed the look of the stock
 Honda headunit.  Something about it is just "better" and it looks great. The carbon fiber trim, the sleek black radio screen,
 and the genuine Honda interface all just looked too good. I decided to switch back to the stock one, purely to give it a try.
