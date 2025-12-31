@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Evan's Journal
+title: Evan's Lab
 email: evan@evanhorsley.com
 description: > # this means to ignore newlines until "Language & timezone"
-  This is my personal blog where I share stuff about my life and projects I'm working on.
+  Evan’s Lab is a hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where curiosity meets code and creativity.
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://www.evanhorsley.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  evy0311
