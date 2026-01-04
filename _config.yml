@@ -34,8 +34,8 @@ theme: minima
 plugins:
   - jekyll-feed
 
-disqus:
-  shortname: evanhorsley
+#disqus:
+#  shortname: evanhorsley
 
 google_analytics: G-KVDHJRBT2R
 
