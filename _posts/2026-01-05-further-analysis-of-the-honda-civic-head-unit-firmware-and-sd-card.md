@@ -94,6 +94,7 @@ One thing worth explicitly calling out here is why dumprom.exe failed when point
 ### Results from dumprom.exe and eimgsfs.exe
 
 After doing that, I ran mem_flat.bin through both [dumprom.exe](https://itsme.home.xs4all.nl/projects/xda/dumprom.html) and [eimgsfs.exe](https://github.com/nlitsme/eimgfs) and it worked! You can see the results of each in the text files below:
+
 <details data-fetch="{{ page.assets }}/dumprom_results.txt">
 <summary><strong>dumprom.exe output (flattened NK.bin)</strong></summary>
 <p>
@@ -105,7 +106,7 @@ After doing that, I ran mem_flat.bin through both [dumprom.exe](https://itsme.ho
 <pre><code class="language-text">Loading…</code></pre>
 </details>
 
-<details data-fetch="{{ page.assets }}/eimgfs_results.txt">
+<details data-fetch="{{ page.assets }}/eimgfs_results.txt" style="margin-bottom: 20px;git ">
 <summary><strong>eimgsfs.exe output (flattened NK.bin)</strong></summary>
 <p>
     <a href="{{ page.assets }}/eimgfs_results.txt" download>
@@ -115,6 +116,8 @@ After doing that, I ran mem_flat.bin through both [dumprom.exe](https://itsme.ho
 
 <pre><code class="language-text">Loading…</code></pre>
 </details>
+
+
 
 The findings from that are very valuable. We can see a few .exe files and a ton of .dll files, as well as some others. See the link at the end of this post for more information on the files found. 
 

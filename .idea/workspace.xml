@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0d2d9d16-01ba-4c0d-89fe-6ba15b3ba8d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jekyll-metadata" beforeDir="false" afterPath="$PROJECT_DIR$/.jekyll-metadata" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/2026/01/05/further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/2026/01/05/further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/style.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +92,7 @@
       <workItem from="1763043184381" duration="7386000" />
       <workItem from="1767215931663" duration="2969000" />
       <workItem from="1767664959392" duration="13462000" />
-      <workItem from="1767724480937" duration="6686000" />
+      <workItem from="1767724480937" duration="6931000" />
     </task>
     <servers />
   </component>
