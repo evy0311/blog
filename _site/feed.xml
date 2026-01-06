@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/blog/" rel="alternate" type="text/html" /><updated>2026-01-06T16:51:12-05:00</updated><id>http://0.0.0.0:4000/blog/feed.xml</id><title type="html">Evan’s Lab</title><subtitle>Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/blog/" rel="alternate" type="text/html" /><updated>2026-01-06T17:05:46-05:00</updated><id>http://0.0.0.0:4000/blog/feed.xml</id><title type="html">Evan’s Lab</title><subtitle>Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further.
 </subtitle><author><name>Evan Horsley</name><email>evan@evanhorsley.com</email></author><entry><title type="html">Further Analysis of the Honda Civic Head Unit Firmware and SD Card (…and the Brick It Became… oops)</title><link href="http://0.0.0.0:4000/blog/2026/01/05/further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/" rel="alternate" type="text/html" title="Further Analysis of the Honda Civic Head Unit Firmware and SD Card (…and the Brick It Became… oops)" /><published>2026-01-05T21:05:42-05:00</published><updated>2026-01-05T21:05:42-05:00</updated><id>http://0.0.0.0:4000/blog/2026/01/05/further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2026/01/05/further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/"><![CDATA[<p>Happy New Year, Honda fans! I rang in the New Year by spending more time going over the Honda Civic head unit. It was very exciting to learn more about this head unit. I’m excited to share my findings below!</p>
 
 <h2 id="rebuilding-nkbin-for-analysis">Rebuilding NK.bin for Analysis</h2>
@@ -66,10 +66,10 @@
 <h3 id="results-from-dumpromexe-and-eimgsfsexe">Results from dumprom.exe and eimgsfs.exe</h3>
 
 <p>After doing that, I ran mem_flat.bin through both <a href="https://itsme.home.xs4all.nl/projects/xda/dumprom.html">dumprom.exe</a> and <a href="https://github.com/nlitsme/eimgfs">eimgsfs.exe</a> and it worked! You can see the results of each in the text files below:</p>
-<details data-fetch="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/dumprom_results.txt">
+<details data-fetch="/blog/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/dumprom_results.txt">
 <summary><strong>dumprom.exe output (flattened NK.bin)</strong></summary>
 <p>
-    <a href="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/dumprom_results.txt" download="">
+    <a href="/blog/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/dumprom_results.txt" download="">
       Download dumprom_results.txt
     </a>
   </p>
@@ -77,10 +77,10 @@
 <pre><code class="language-text">Loading…</code></pre>
 </details>
 
-<details data-fetch="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/eimgfs_results.txt">
+<details data-fetch="/blog/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/eimgfs_results.txt">
 <summary><strong>eimgsfs.exe output (flattened NK.bin)</strong></summary>
 <p>
-    <a href="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/eimgfs_results.txt" download="">
+    <a href="/blog/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/eimgfs_results.txt" download="">
       Download eimgfs_results.txt
     </a>
   </p>
@@ -135,8 +135,9 @@
 <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Extracted BMPs:</span><span class="sh">"</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
 <span class="n">PY</span>
 </code></pre></div></div>
-<p>extracted a single image that I still can’t wrap my head around. As you can see below, it is almost the same resolution as the head unit, and contains text relating to a Honda dealer called “Germain Honda”. This is the dealer where I suspect the car was purchased from when new. This image was likely either displayed after first purchase, or I think it may be displayed after the vehicle is serviced by a dealer.
-<img src="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/bmp_00000_33010000_1080054.bmp" alt="Germain Honda possible radio splash screen" /></p>
+<p>extracted a single image that I still can’t wrap my head around. As you can see below, it is almost the same resolution as the head unit, and contains text relating to a Honda dealer called “Germain Honda”. This is the dealer where I suspect the car was purchased from when new. This image was likely either displayed after first purchase, or I think it may be displayed after the vehicle is serviced by a dealer.</p>
+
+<p><img src="/blog/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/bmp_00000_33010000_1080054.bmp" alt="Germain Honda possible radio splash screen" /></p>
 
 <h3 id="dealer-splash-image-as-a-provisioning-artifact">Dealer Splash Image as a Provisioning Artifact</h3>
 
@@ -198,9 +199,9 @@ backup sum 0x00011228, calced 0x4F37853E -&gt; NG
 
 <p>Based on the behavior I’m seeing, it seems very likely that the unit is stuck in a state where a persistent flag has been set telling the bootloader to expect a program update. When the update process fails or cannot find valid media, the unit never exits that state and simply hangs on boot. I don’t yet have direct confirmation of where this flag lives, but given everything else observed so far, internal flash and possibly EEPROM are the most likely candidates. This is something I plan to investigate further.</p>
 
-<p><img src="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/Honda%20DA%20soft%20brick%201.jpeg" alt="Preparing for program update screen on soft bricked radio" /></p>
+<p><img src="/blog/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/Honda%20DA%20soft%20brick%201.jpeg" alt="Preparing for program update screen on soft bricked radio" /></p>
 
-<p><img src="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/Honda%20DA%20soft%20brick%202.jpeg" alt="00000006 error code screen on soft bricked radio" /></p>
+<p><img src="/blog/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/Honda%20DA%20soft%20brick%202.jpeg" alt="00000006 error code screen on soft bricked radio" /></p>
 
 <h2 id="educational-research-notice">Educational Research Notice</h2>
 

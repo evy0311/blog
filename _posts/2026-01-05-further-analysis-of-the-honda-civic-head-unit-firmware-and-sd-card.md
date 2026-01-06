@@ -22,7 +22,7 @@ tags:
 - bootloader
 - update-process
 - bricked-device
-assets: /assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card
+assets: /blog/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card
 ---
 
 Happy New Year, Honda fans! I rang in the New Year by spending more time going over the Honda Civic head unit. It was very exciting to learn more about this head unit. I'm excited to share my findings below!
@@ -165,6 +165,7 @@ print("Extracted BMPs:", count)
 PY
 ```
 extracted a single image that I still can't wrap my head around. As you can see below, it is almost the same resolution as the head unit, and contains text relating to a Honda dealer called "Germain Honda". This is the dealer where I suspect the car was purchased from when new. This image was likely either displayed after first purchase, or I think it may be displayed after the vehicle is serviced by a dealer.
+
 ![Germain Honda possible radio splash screen]({{ page.assets }}/bmp_00000_33010000_1080054.bmp)
 
 ### Dealer Splash Image as a Provisioning Artifact
