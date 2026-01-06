@@ -1,9 +1,13 @@
 ---
 layout: post
 title:  "New Car and Reverse Engineering It"
+excerpt: "After buying a 2014 Honda Civic Si, I set out to understand and reverse engineer the factory Windows CE head unit, exploring its hardware, software limitations, and whether modern features like CarPlay could realistically be made to work."
 comments: true
 date:   2025-02-12 14:55:00 -0500
-categories: honda civic reverse engineering hack hacking car auto automotive
+categories:
+  - reverse-engineering
+  - automotive
+  - embedded-systems
 ---
 
 <!-- Content -->

@@ -21,11 +21,23 @@
 title: Evan's Lab
 email: evan@evanhorsley.com
 description: > # this means to ignore newlines until "Language & timezone"
-  Evan’s Lab is a hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where curiosity meets code and creativity.
+  Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further.
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://www.evanhorsley.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  evy0311
 timezone: America/New_York
+
+author:
+  name: Evan Horsley
+  email: "evan@evanhorsley.com"
+
+minima:
+  social_links:
+    - title: Github
+      icon: github
+      url: "https://github.com/evy0311"
+  date_format: "%B %-d, %Y" # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+  show_excerpts: true
 
 permalink: /:year/:month/:day/:title/
 
@@ -33,6 +45,9 @@ permalink: /:year/:month/:day/:title/
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
+
+remote_theme: "jekyll/minima@bf9ef98"
 
 #disqus:
 #  shortname: evanhorsley

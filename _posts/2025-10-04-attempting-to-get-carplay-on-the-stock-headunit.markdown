@@ -1,9 +1,13 @@
 ---
 layout: post
 title:  "Attempting to get CarPlay on the stock headunit"
+excerpt: "An experiment to bring CarPlay to a stock Honda head unit using its hidden HDMI input—leveraging a Raspberry Pi, reverse-engineering Honda’s phone projection system, and exploring touch, audio, and control limitations along the way."
 comments: true
 date:   2025-10-04 12:00:00 -0500
-categories: honda civic reverse engineering hack hacking car auto automotive
+categories:
+  - reverse-engineering
+  - automotive
+  - embedded-systems
 ---
 
 <!-- Content -->

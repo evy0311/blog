@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Attempting to get CarPlay on the stock headunit | Evan’s Lab</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Attempting to get CarPlay on the stock headunit" />
+<meta name="author" content="Evan Horsley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An experiment to bring CarPlay to a stock Honda head unit using its hidden HDMI input—leveraging a Raspberry Pi, reverse-engineering Honda’s phone projection system, and exploring touch, audio, and control limitations along the way." />
+<meta property="og:description" content="An experiment to bring CarPlay to a stock Honda head unit using its hidden HDMI input—leveraging a Raspberry Pi, reverse-engineering Honda’s phone projection system, and exploring touch, audio, and control limitations along the way." />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/2025/10/04/attempting-to-get-carplay-on-the-stock-headunit/" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/2025/10/04/attempting-to-get-carplay-on-the-stock-headunit/" />
+<meta property="og:site_name" content="Evan’s Lab" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-10-04T13:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Attempting to get CarPlay on the stock headunit" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Evan Horsley"},"dateModified":"2025-10-04T13:00:00-04:00","datePublished":"2025-10-04T13:00:00-04:00","description":"An experiment to bring CarPlay to a stock Honda head unit using its hidden HDMI input—leveraging a Raspberry Pi, reverse-engineering Honda’s phone projection system, and exploring touch, audio, and control limitations along the way.","headline":"Attempting to get CarPlay on the stock headunit","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blog/2025/10/04/attempting-to-get-carplay-on-the-stock-headunit/"},"url":"http://0.0.0.0:4000/blog/2025/10/04/attempting-to-get-carplay-on-the-stock-headunit/"}</script>
+<!-- End Jekyll SEO tag -->
+<link id="main-stylesheet" rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/blog/feed.xml" title="Evan&apos;s Lab" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/blog/">Evan&#39;s Lab</a>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+  <div class="wrapper">
+    <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Attempting to get CarPlay on the stock headunit</h1>
+    <div class="post-meta">
+      <time class="dt-published" datetime="2025-10-04T13:00:00-04:00" itemprop="datePublished">
+        October 4, 2025
+      </time>
+
+      
+      
+      
+
+      <span class="bullet-divider">•</span>
+      <span class="reading-time">
+        4 minute read
+      </span>
+    </div>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!-- Content -->
+
+<p>Well, for almost a year I had the Joying android headunit (Option 3 mentioned in my post <a href="https://evanhorsley.com/blog/2025/02/12/new-car-and-reverse-engineering-it/">here</a>) in my 2014 Honda Civic Si. This was one of the
+options I had mentioned in my original post a bit back. It was great, but I really missed the look of the stock
+Honda headunit.  Something about it is just “better” and it looks great. The carbon fiber trim, the sleek black radio screen,
+and the genuine Honda interface all just looked too good. I decided to switch back to the stock one, purely to give it a try.</p>
+
+<p>The Joying unit is overall good. The wireless CarPlay worked great and I had 0 issues with that. My only complaint is the audio
+quality. Its not the best, but not terrible either. But the stock headunit produces noticeably better audio, in my opinion. This was another reason why I switched back.</p>
+
+<h3 id="the-new-experiment">The new experiment</h3>
+
+<p>After swapping back to stock, I had a goal: how can I get CarPlay on the stock Honda headunit? The system as we know runs
+Windows CE, but getting into that interface has so far proven to be difficult, and even if we could, development for Windows CE is hard,
+mostly given its age and deprecation. That leaves us with one main route: Utilizing the HDMI input.</p>
+
+<p>My thinking is this: The car has an HDMI input, so why can’t I just run a Raspberry Pi in the car that outputs CarPlay (or anything else I want, really) to
+the car headunit? This is the least intrusive option, because then all the existing car function like backup camera, lanewatch, and audio control
+remains untouched, and those things will still override when needed.</p>
+
+<h3 id="the-problem-with-this">The problem with this</h3>
+
+<p>Well, there are a few. First off, the HDMI input can’t be used when driving. This should be easy to solve, because the headunit has an input wire on the back
+that connects to the parking brake signal. If this input is grounded, the headunit will think the parking brake is on, and then the HDMI will work while driving. This can 
+be achieved by either splicing into that wire and grounding it, or doing what I plan to do, and making a harness to sit in between the headunit and existing
+plug to “intercept” this signal and ground it myself. Easy enough.</p>
+
+<p>The second problem? How to control the Raspberry Pi when it’s in the car. Since HDMI doesnt transmit touch data, we need a way to either get the touch data from the car
+back to the Raspberry Pi, or an alternative method. Of course, touch screen is preferred, but also the most difficult. The easiest option is to wire in a rotary encode with push button
+to the Pi, then that can be used to control CarPlay (similar to how some BMW and Mazda cars do). The rotary encoder option will be the first path I take, to get this going for the time being. 
+However, I have a plan to get the touch data out of the stock unit and into the Pi.</p>
+
+<p>Stepping back, the original purpose of the HDMI input was much less about plugging in devices like a PlayStation or Apple TV. It had everything to do with Honda’s early attempt at a phone driven
+infotainment system, pre-CarPlay and Android Auto. The idea was an iPhone could be plugged into the HDMI and USB ports on the car, and also connected via Bluetooth. Then, you would load the Honda
+specific apps onto the phone, and then when open those apps could project things onto the car screen, even while in motion. For example, Honda had a navigation app that would display a GPS-like
+interface on the car radio, and you could even interact with it via the touchscreen.</p>
+
+<p>How this all worked together, I’ve no 100% understanding, yet. But my initial thoughts have been that the HDMI served the video, and possibly audio from the phone. Then, the USB was used to keep the phone charged,
+and possibly served the touch screen data to the phone (since user’s could interact with the Honda radio touchscreen and control the GPS apps running on the phone). The Bluetooth likely served for calls and to allow
+steering wheel controls.</p>
+
+<p>I’ve done initial attempts to mimic this interface with no luck, yet. I think the car expects a very specific sequence of setup and commands from the phone over USB, of which I’m not sure what they are. The apps
+are no longer available for download, and Honda has long discontinued them everywhere. If anyone has an old iPhone lying around with these apps, let me know, and I will buy it off of you. Ha.</p>
+
+<p>As for audio, I was initially hoping that the car would allow me to have the HDMI plugged in for video, but audio going over Bluetooth from the Pi. This would’ve made it much easier to relay the steering wheel controls
+to the Pi and then to CarPlay, but the headunit views these as two separate inputs, so it wasn’t possible from what I can tell. Audio over HDMI works fine, but of course, no phone button controls.</p>
+
+<h3 id="what-works-so-far">What works so far</h3>
+
+<p>So far, I’ve gotten the Raspberry Pi displaying the CarPlay interface to the screen, and audio works great. I had to adjust the headunit’s color settings for the HDMI input as it looked a bit washed out, 
+but other than that I think it turned out pretty great! Now that this works and looks good, it’s time to solve for all of the other problems. Those will be the hardest part. but I’ve gotten a pretty good understanding of this
+system so far and will continue to work on this.</p>
+
+<p>For those wondering, CarPlay is running on the Raspberry Pi with software found <a href="https://github.com/rhysmorgan134/react-carplay">here</a>.</p>
+
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-10-04-attempting-to-get-carplay-on-the-stock-headunit/sneak-peak.jpeg" alt="CarPlay Sneak Peak" /></p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+            data-repo="evy0311/blog"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMzU0ODYyMjg="
+            data-category="Announcements"
+            data-category-id="DIC_kwDODgk8FM4C0kq9"
+            data-mapping="pathname"
+            data-strict="1"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+
+  <a class="u-url" href="/blog/2025/10/04/attempting-to-get-carplay-on-the-stock-headunit/" hidden></a>
+</article>
+  </div>
+</main><link id="fa-stylesheet" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
+
+<footer class="site-footer h-card">
+  <data class="u-url" value="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <ul class="contact-list">
+          <li class="p-name">Evan Horsley</li>
+          <li><a class="u-email" href="mailto:evan@evanhorsley.com">evan@evanhorsley.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p>Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further.
+</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li>
+        <a rel="me" href="https://github.com/evy0311" target="_blank" title="Github">
+            <span class="grey fa-brands fa-github fa-lg"></span>
+        </a>
+    </li><li>
+        <a rel="me" href="https://evanhorsley.com" target="_blank" title="Website">
+            <span class="grey fa-solid fa-globe fa-lg"></span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="http://0.0.0.0:4000/blog/feed.xml" target="_blank" title="Subscribe to syndication feed">
+            <svg class="svg-icon grey" viewbox="0 0 16 16">
+                <path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194
+          11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0
+          13.806c0-1.21.983-2.195 2.194-2.195zM10.606
+          16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"
+                />
+            </svg>
+        </a>
+    </li>
+</ul></div>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>

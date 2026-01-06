@@ -5,7 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d2d9d16-01ba-4c0d-89fe-6ba15b3ba8d4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2025-11-13-more-honda-civic-headunit-reverse-engineering.markdown" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/pages.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_includes/social.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/main.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/Honda DA soft brick 1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/Honda DA soft brick 2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/bmp_00000_33010000_1080054.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/dumprom_results.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/eimgsfs_results.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/new-post" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2025-02-12-new-car-and-reverse-engineering-it.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2025-02-12-new-car-and-reverse-engineering-it.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2025-02-13-inside-the-honda-civic-radio.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2025-02-13-inside-the-honda-civic-radio.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2025-10-04-attempting-to-get-carplay-on-the-stock-headunit.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2025-10-04-attempting-to-get-carplay-on-the-stock-headunit.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2025-12-31-more-honda-civic-headunit-reverse-engineering.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2025-12-31-more-honda-civic-headunit-reverse-engineering.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/2020-01-25-date-night-1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/minima-social-icons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/blog/new/2020/01/22/welcome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/date/night/2020/01/25/date-night.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,28 +60,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "gh-pages",
-    "last_opened_file_path": "/Users/evanhorsley/Documents/Github/blog/assets/images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gh-pages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/evanhorsley/Documents/Github/blog/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/_posts" />
       <recent name="$PROJECT_DIR$/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures" />
       <recent name="$PROJECT_DIR$/assets/images/2025-02-13-inside-the-honda-civic-radio" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card" />
       <recent name="$PROJECT_DIR$/assets/images/2025-12-31-more-honda-civic-headunit-reverse-engineering" />
       <recent name="$PROJECT_DIR$/assets/images/2025-02-13-inside-the-honda-civic-radio" />
       <recent name="$PROJECT_DIR$/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures" />
@@ -83,6 +114,8 @@
       <workItem from="1762216515742" duration="2529000" />
       <workItem from="1763043184381" duration="7386000" />
       <workItem from="1767215931663" duration="2969000" />
+      <workItem from="1767664959392" duration="13462000" />
+      <workItem from="1767724480937" duration="6421000" />
     </task>
     <servers />
   </component>

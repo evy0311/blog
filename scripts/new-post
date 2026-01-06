@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: scripts/new-post \"Post Title\" [slug]"
+  exit 1
+fi
+
+TITLE="$1"
+SLUG="${2:-}"
+
+DATE="$(date +%Y-%m-%d)"
+TIME="$(date +%H:%M:%S)"
+YEAR="$(date +%Y)"
+
+# Basic slugify (lowercase, spaces to dashes, strip non-alnum/dash)
+slugify() {
+  echo "$1" | tr '[:upper:]' '[:lower:]' \
+    | sed -E 's/[^a-z0-9]+/-/g' \
+    | sed -E 's/^-+|-+$//g'
+}
+
+if [[ -z "$SLUG" ]]; then
+  SLUG="$(slugify "$TITLE")"
+fi
+
+POST_PATH="_posts/${DATE}-${SLUG}.md"
+ASSET_DIR="assets/posts/${DATE}-${SLUG}"
+
+if [[ -e "$POST_PATH" ]]; then
+  echo "Post already exists: $POST_PATH"
+  exit 1
+fi
+
+mkdir -p "$(dirname "$POST_PATH")"
+mkdir -p "$ASSET_DIR"
+
+cat > "$POST_PATH" <<EOF
+---
+layout: post
+title: "${TITLE//\"/\\\"}"
+excerpt: ""
+date: ${DATE} ${TIME} -0500
+categories: []
+tags: []
+assets: /${ASSET_DIR}
+---
+
+Post content goes here, dude!
+
+EOF
+
+touch "$ASSET_DIR/.keep"
+
+echo "Created:"
+echo "  $POST_PATH"
+echo "  $ASSET_DIR/"

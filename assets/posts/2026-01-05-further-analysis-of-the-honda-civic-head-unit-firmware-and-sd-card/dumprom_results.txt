@@ -1,0 +1,679 @@
+C:\Users\Evan\Desktop\New folder>dumprom.exe -d dump/ mem_flat.bin
+img 00000000 : hdr=8e6a03f0 base=8e640000  commandlineoffset=8e640000
+ERROR: could not find pointer for ofs 00000000
+NOTE: section at fb8c0000 iso 0000f000 for nk.exe
+NOTE: section at fb8c2000 iso 00011000 for nk.exe
+NOTE: section at fb8cd000 iso 00010000 for kitl.dll
+NOTE: section at fb908000 iso 0003d000 for kernel.dll
+
+8e640000 - 8e640000 L00000000 rom_00 start
+8e640000 - 8e640010 L00000010 unknown 00090009 0009d001 0009402b 8e645470
+8e640010 - 8e640040 L00000030 NUL
+8e640040 - 8e640048 L00000008 'ECEC' -> 8e6a03f0
+8e640048 - 8e64004c L00000004 unknown f0 03 06 00
+8e64004c - 8e641000 L00000fb4 NUL
+8e641000 - 8e64e464 L0000d464 o32 region_0 rva=00001000 vsize=0000d464 real=8e641000 psize=0000e000 f=60000020 for nk.exe
+8e64e464 - 8e64edf2 L0000098e filedata en-US.nlx
+8e64edf2 - 8e64f000 L0000020e NUL
+8e64f000 - 8e64f6d0 L000006d0 o32 region_3 rva=0000f000 vsize=000006d0 real=8e64f000 psize=00001000 f=40000040 for nk.exe
+8e64f6d0 - 8e64fcac L000005dc o32 region_2 rva=00016000 vsize=000009e0 real=dfc56000 psize=000005dc f=40002040 for sdbus.dll
+8e64fcac - 8e64fef4 L00000248 o32 region_2 rva=00008000 vsize=00000360 real=dfbf8000 psize=00000248 f=40002040 for usbd.dll
+8e64fef4 - 8e64ffde L000000ea o32 region_2 rva=00004000 vsize=00000108 real=40194000 psize=000000ea f=40002040 for ceusbkwrapper.dll
+8e64ffe0 - 8e64ffef L0000000f modname udfs_melco.dll
+8e64fff0 - 8e64ffff L0000000f modname LoadingApp.exe
+8e64ffff - 8e651000 L00001001 NUL
+8e651000 - 8e65f651 L0000e651 o32 region_0 rva=00001000 vsize=0000e651 real=8e651000 psize=0000f000 f=60000020 for kitl.dll
+8e65f654 - 8e65f85e L0000020a o32 region_1 rva=0000d000 vsize=00004134 real=dfb3d000 psize=0000020a f=c0002040 for cd.dll
+8e65f860 - 8e65fc8a L0000042a o32 region_2 rva=00012000 vsize=00000708 real=dfb42000 psize=0000042a f=40002040 for cd.dll
+8e65fc8c - 8e65fe1e L00000192 o32 region_2 rva=00006000 vsize=00000208 real=dfb26000 psize=00000192 f=40002040 for DVDWrap.dll
+8e65fe20 - 8e65ff54 L00000134 o32 region_1 rva=00007000 vsize=00000134 real=dfb17000 psize=00001000 f=c0300040 for udfs_melco.dll
+8e65ff54 - 8e65ffcc L00000078 o32 struct locale.dll
+8e65ffcc - 8e65ffd7 L0000000b filename rsaenh.dll
+8e65ffd8 - 8e65ffe4 L0000000c filename normnfc.nls
+8e65ffe4 - 8e65fff0 L0000000c filename normnfd.nls
+8e65fff0 - 8e65fffd L0000000d filename normnfkc.nls
+8e660000 - 8e6607b8 L000007b8 o32 region_2 rva=00010000 vsize=000007b8 real=8e660000 psize=00001000 f=40000040 for kitl.dll
+8e6607b8 - 8e66091c L00000164 o32 region_1 rva=00007000 vsize=0000850c real=dfd27000 psize=00000164 f=c0002040 for SUBCPU_SCIF.dll
+8e66091c - 8e660aaa L0000018e o32 region_2 rva=00010000 vsize=000001f0 real=dfd30000 psize=0000018e f=40002040 for SUBCPU_SCIF.dll
+8e660aac - 8e660c48 L0000019c o32 region_2 rva=00009000 vsize=00000220 real=dfd19000 psize=0000019c f=40002040 for SYS.dll
+8e660c48 - 8e660e30 L000001e8 o32 region_2 rva=0000e000 vsize=00000290 real=dfcfe000 psize=000001e8 f=40002040 for DRF.dll
+8e660e30 - 8e660f92 L00000162 o32 region_1 rva=0000c000 vsize=000036f0 real=dfcdc000 psize=00000162 f=c0002040 for DTD.dll
+8e660f94 - 8e660fdc L00000048 o32 struct oalioctl.dll
+8e660fdc - 8e660fe9 L0000000d modname sdhi_isr.dll
+8e660fec - 8e660ff5 L00000009 modname usbd.dll
+8e660ff5 - 8e662000 L0000100b NUL
+8e662000 - 8e69d59c L0003b59c o32 region_0 rva=00001000 vsize=0003b59c real=8e662000 psize=0003c000 f=60000020 for kernel.dll
+8e69d59c - 8e69d7c0 L00000224 o32 region_2 rva=00008000 vsize=00000328 real=dfb18000 psize=00000224 f=40002040 for udfs_melco.dll
+8e69d7c0 - 8e69d95a L0000019a o32 region_1 rva=00011000 vsize=0000053c real=dfb01000 psize=0000019a f=c0002040 for ceusbkwrapperdrv.dll
+8e69d95c - 8e69de72 L00000516 o32 region_2 rva=00012000 vsize=00000990 real=dfb02000 psize=00000516 f=40002040 for ceusbkwrapperdrv.dll
+8e69de74 - 8e69dee0 L0000006c e32 struct 4 objs, img=2122 entrypt=00010068 base=dff40000 v7.0 tp0 k.locale.dll
+8e69dee0 - 8e69dee4 L00000004 unknown 09 00 00 00
+8e69dee4 - 8e69df44 L00000060 o32 struct k.locale.dll
+8e69df44 - 8e69dfb0 L0000006c e32 struct 5 objs, img=2122 entrypt=00006b34 base=400c0000 v7.0 tp0 sorting.dll
+8e69dfb0 - 8e69dfb4 L00000004 unknown 09 00 00 00
+8e69dfb4 - 8e69dffc L00000048 o32 struct filesys.dll
+8e69dffc - 8e69e000 L00000004 NUL
+8e69e000 - 8e6a03f0 L000023f0 o32 region_2 rva=0003d000 vsize=000023f0 real=8e69e000 psize=00003000 f=40000040 for kernel.dll
+8e6a03f0 - 8e6a0444 L00000054 rom_00 header: dlls=4001dfaf-401ae000 phys=8e640000-8ebd3368, 66 modules, 17 files, 3 copyentries ext=8e641200  ram=89f00000-8e640000 cputype=000001a6
+8e6a0444 - 8e6a0464 L00000020 modent   0 00000007 01ce929776224f00    73728 8e640000 nk.exe
+8e6a0464 - 8e6a0484 L00000020 modent   1 00000007 01ce929776224f00    81920 8e66e000 kitl.dll
+8e6a0484 - 8e6a04a4 L00000020 modent   2 00000007 01ce9296baf9b600   286720 8e6cc000 kernel.dll
+8e6a04a4 - 8e6a04c4 L00000020 modent   3 00001007 01ce92978803f200   475136 8e718000 coredll.dll
+8e6a04c4 - 8e6a04e4 L00000020 modent   4 00000007 01cbad776658cc00    20480 8e78e000 oalioctl.dll
+8e6a04e4 - 8e6a0504 L00000020 modent   5 00000007 01ce9296baf9b600   454656 8e794000 k.coredll.dll
+8e6a0504 - 8e6a0524 L00000020 modent   6 00000007 01ce92978803f200   151552 8e805000 locale.dll
+8e6a0524 - 8e6a0544 L00000020 modent   7 00000007 01ce92978803f200   151552 8e82b000 k.locale.dll
+8e6a0544 - 8e6a0564 L00000020 modent   8 00000007 01cbad7368b92700    45056 8e851000 sorting.dll
+8e6a0564 - 8e6a0584 L00000020 modent   9 00000007 01cbad7368b92700    45056 8e85d000 k.sorting.dll
+8e6a0584 - 8e6a05a4 L00000020 modent  10 00000007 01cbad7368b92700    36864 8e869000 normalize.dll
+8e6a05a4 - 8e6a05c4 L00000020 modent  11 00000007 01cbad7368b92700    36864 8e873000 k.normalize.dll
+8e6a05c4 - 8e6a05e4 L00000020 modent  12 00000007 01ce9296c220c400   225280 8e87d000 filesys.dll
+8e6a05e4 - 8e6a0604 L00000020 modent  13 00000007 01cbad736b1b8100    24576 8e8bf000 romfsd.dll
+8e6a0604 - 8e6a0624 L00000020 modent  14 00000007 01ce9296be8d3d00    20480 8e8c6000 device.dll
+8e6a0624 - 8e6a0644 L00000020 modent  15 00000007 01cbad7369ea5400    32768 8e8cc000 udevice.exe
+8e6a0644 - 8e6a0664 L00000020 modent  16 00001007 01ce9296bd5c1000    86016 8e8d5000 devmgr.dll
+8e6a0664 - 8e6a0684 L00000020 modent  17 00000007 01cbad775b9e3700    20480 8e8eb000 regenum.dll
+8e6a0684 - 8e6a06a4 L00000020 modent  18 00000007 01cbad775b9e3700    28672 8e8f1000 busenum.dll
+8e6a06a4 - 8e6a06c4 L00000020 modent  19 00000007 01cc823abd260000    98304 8e8f9000 exfat.dll
+8e6a06c4 - 8e6a06e4 L00000020 modent  20 00000007 01cbad7369ea5400    24576 8e912000 diskcache.dll
+8e6a06e4 - 8e6a0704 L00000020 modent  21 00001007 01ce92978803f200    69632 8e919000 fatutil.dll
+8e6a0704 - 8e6a0724 L00000020 modent  22 00000007 01ce92978803f200    69632 8e92b000 k.fatutil.dll
+8e6a0724 - 8e6a0744 L00000020 modent  23 00000007 01cbad736b1b8100    45056 8e93d000 relfsd.dll
+8e6a0744 - 8e6a0764 L00000020 modent  24 00000007 01cbad736c4cae00    20480 8e949000 relfsdext.dll
+8e6a0764 - 8e6a0784 L00000020 modent  25 00000001 01cc823abe572d00    73728 8e94f000 shell.exe
+8e6a0784 - 8e6a07a4 L00000020 modent  26 00000007 01ce9296bc2ae300    28672 8e963000 shellcelog.dll
+8e6a07a4 - 8e6a07c4 L00000020 modent  27 00001007 01cbad736b1b8100    24576 8e96b000 toolhelp.dll
+8e6a07c4 - 8e6a07e4 L00000020 modent  28 00000007 01cbad736b1b8100    24576 8e972000 k.toolhelp.dll
+8e6a07e4 - 8e6a0804 L00000020 modent  29 00000007 01cbad736d7ddb00    45056 8e979000 DllHeapInfoExt.dll
+8e6a0804 - 8e6a0824 L00000020 modent  30 00001007 01ce9296c0ef9700   135168 8e985000 fsdmgr.dll
+8e6a0824 - 8e6a0844 L00000020 modent  31 00000007 01ccfb3fb5e38500    36864 8e9a7000 mspart.dll
+8e6a0844 - 8e6a0864 L00000020 modent  32 00000007 01cbad7369ea5400    73728 8e9b1000 cereg.dll
+8e6a0864 - 8e6a0884 L00000020 modent  33 00000007 01cbad7369ea5400    73728 8e9ca000 k.cereg.dll
+8e6a0884 - 8e6a08a4 L00000020 modent  34 00000007 01ce9296bd5c1000    36864 8e9e3000 k.ceddk.dll
+8e6a08a4 - 8e6a08c4 L00000020 modent  35 00001007 01ce9296bd5c1000    36864 8e9ed000 ceddk.dll
+8e6a08c4 - 8e6a08e4 L00000020 modent  36 00000007 01cbad775f31be00    24576 8e9f7000 mmtimer.dll
+8e6a08e4 - 8e6a0904 L00000020 modent  37 00000007 01cbad775f31be00    24576 8e9fe000 k.mmtimer.dll
+8e6a0904 - 8e6a0924 L00000020 modent  38 00000007 01ce929776224f00    90112 8ea05000 LGD.dll
+8e6a0924 - 8e6a0944 L00000020 modent  39 00000007 01ce9306ef30dcd1     9728 8ea1c000 k.logdef.dll
+8e6a0944 - 8e6a0964 L00000020 modent  40 00001007 01ce9306ef30dcd1     9728 8ea23000 logdef.dll
+8e6a0964 - 8e6a0984 L00000020 modent  41 00000007 01ce929776224f00    20480 8ea2a000 PhysicalMemory.dll
+8e6a0984 - 8e6a09a4 L00000020 modent  42 00000007 01ce929776224f00    40960 8ea30000 SUBCPU_SCIF.dll
+8e6a09a4 - 8e6a09c4 L00000020 modent  43 00000007 01ce929776224f00    45056 8ea43000 SYS.dll
+8e6a09c4 - 8e6a09e4 L00000020 modent  44 00000007 01ce929776224f00    65536 8ea4f000 DRF.dll
+8e6a09e4 - 8e6a0a04 L00000020 modent  45 00000007 01ce929777537c00    61440 8ea60000 DTD.dll
+8e6a0a04 - 8e6a0a24 L00000020 modent  46 00000007 01ce929777537c00   118784 8ea73000 MON.dll
+8e6a0a24 - 8e6a0a44 L00000020 modent  47 00000007 01ce929777537c00    36864 8eaa5000 VIO.dll
+8e6a0a44 - 8e6a0a64 L00000020 modent  48 00000007 01ce929777537c00    65536 8eab1000 sdmemory.dll
+8e6a0a64 - 8e6a0a84 L00000020 modent  49 00001007 01ce929777537c00   102400 8eac2000 sdbus.dll
+8e6a0a84 - 8e6a0aa4 L00000020 modent  50 00000007 01ce929777537c00    20480 8eadc000 SDDmacLib.dll
+8e6a0aa4 - 8e6a0ac4 L00000020 modent  51 00000007 01ce2e7ad1bc7600    61440 8eae2000 sdhi.dll
+8e6a0ac4 - 8e6a0ae4 L00000020 modent  52 00000007 01ce2e7ad1bc7600    16384 8eaf2000 sdhi_isr.dll
+8e6a0ae4 - 8e6a0b04 L00000020 modent  53 00001007 01ce929777537c00    40960 8eaf8000 usbd.dll
+8e6a0b04 - 8e6a0b24 L00000020 modent  54 00000007 01ce929776224f00    90112 8eb03000 ohci2.dll
+8e6a0b24 - 8e6a0b44 L00000020 modent  55 00000007 01ce929777537c00   114688 8eb1a000 ehci.dll
+8e6a0b44 - 8e6a0b64 L00000020 modent  56 00001007 01ce929777537c00    40960 8eb37000 usbmsc.dll
+8e6a0b64 - 8e6a0b84 L00000020 modent  57 00000007 01ce929777537c00    45056 8eb42000 usbdisk6.dll
+8e6a0b84 - 8e6a0ba4 L00000020 modent  58 00000007 01ce929776224f00    24576 8eb4e000 JITDbgrEXE.exe
+8e6a0ba4 - 8e6a0bc4 L00000020 modent  59 00000007 01ce929776224f00    49152 8eb55000 JITDbgrDLL.dll
+8e6a0bc4 - 8e6a0be4 L00000020 modent  60 00000007 01ce929777537c00    65536 8eb89000 cd.dll
+8e6a0be4 - 8e6a0c04 L00000020 modent  61 00000007 01ce929777537c00    32768 8eb9e000 DVDWrap.dll
+8e6a0c04 - 8e6a0c24 L00000020 modent  62 00000007 01ce929777537c00    40960 8eba7000 udfs_melco.dll
+8e6a0c24 - 8e6a0c44 L00000020 modent  63 00000007 01ce2e7ad1bc7600    24576 8ebb2000 ceusbkwrapper.dll
+8e6a0c44 - 8e6a0c64 L00000020 modent  64 00000007 01ce6bf2235edc00    86016 8ebb9000 ceusbkwrapperdrv.dll
+8e6a0c64 - 8e6a0c84 L00000020 modent  65 00000007 01cecb15aeeeeb0a   921600 8ebcf000 LoadingApp.exe
+8e6a0c84 - 8e6a0ca0 L0000001c filent   0 00000801 01ce9296acab9a00     4065      926 8e9bdba4 ceconfig.h
+8e6a0ca0 - 8e6a0cbc L0000001c filent   1 00000007 01ce92978803f200   265578   265578 8ea8b310 wince.nls
+8e6a0cbc - 8e6a0cd8 L0000001c filent   2 00000807 01ce92978803f200    19998     3410 8e70527c initobj.dat
+8e6a0cd8 - 8e6a0cf4 L0000001c filent   3 00000807 01ce92978803f200    64046    15249 8eacc07c default.fdf
+8e6a0cf4 - 8e6a0d10 L0000001c filent   4 00000807 01cb74ca31eca800   183136   105324 8eacfc10 rsaenh.dll
+8e6a0d10 - 8e6a0d2c L0000001c filent   5 00000007 01cb74cb59904000    47076    47076 8eae977c normnfc.nls
+8e6a0d2c - 8e6a0d48 L0000001c filent   6 00000007 01cb74cb59904000    40566    40566 8eaf4f60 normnfd.nls
+8e6a0d48 - 8e6a0d64 L0000001c filent   7 00000007 01cb74cb59904000    67808    67808 8eafedd8 normnfkc.nls
+8e6a0d64 - 8e6a0d80 L0000001c filent   8 00000007 01cb74cb59904000    61718    61718 8eb0f6b8 normnfkd.nls
+8e6a0d80 - 8e6a0d9c L0000001c filent   9 00000007 01cb74cb59904000    59342    59342 8eb1e7d0 normidna.nls
+8e6a0d9c - 8e6a0db8 L0000001c filent  10 00000007 01cb74cb5ac16d00    14920    14920 8eb2cfa0 scripts.nls
+8e6a0db8 - 8e6a0dd4 L0000001c filent  11 00000007 01cb74cb5e54f400   636512   636512 8eb309e8 SortDefault.nls
+8e6a0dd4 - 8e6a0df0 L0000001c filent  12 00000007 01cb74cb4b422400    23172    23172 8ebcc048 locale.nls
+8e6a0df0 - 8e6a0e0c L0000001c filent  13 00000007 01cb74cb42e9e900     2446     2446 8e64e464 en-US.nlx
+8e6a0e0c - 8e6a0e28 L0000001c filent  14 00000807 01cb3e950aa7a800      802      658 8e7f745c autospc.p7b
+8e6a0e28 - 8e6a0e44 L0000001c filent  15 00000807 01cb3e950aa7a800     4259     2871 8e7c0420 autopriv.p7b
+8e6a0e44 - 8e6a0e60 L0000001c filent  16 00000807 01cb3e946aea1a00     9356     6298 8ebd1acc ciroots.p7b
+8e6a0e60 - 8e6a1000 L000001a0 NUL
+8e6a1000 - 8e705279 L00064279 o32 region_0 rva=00001000 vsize=00064279 real=40011000 psize=00065000 f=68000020 for coredll.dll
+8e70527c - 8e705fce L00000d52 filedata initobj.dat
+8e705fce - 8e706000 L00000032 NUL
+8e706000 - 8e707dbc L00001dbc o32 region_3 rva=0006d000 vsize=00001dbc real=4007d000 psize=00002000 f=48000040 for coredll.dll
+8e707dbc - 8e707e80 L000000c4 o32 region_1 rva=00006000 vsize=000000c4 real=400d6000 psize=00001000 f=c0300040 for normalize.dll
+8e707e80 - 8e707f44 L000000c4 o32 region_1 rva=00006000 vsize=000000c4 real=dff26000 psize=00001000 f=c0300040 for k.normalize.dll
+8e707f44 - 8e707f98 L00000054 o32 region_1 rva=00002000 vsize=00000054 real=dfe02000 psize=00001000 f=c0300040 for k.toolhelp.dll
+8e707f98 - 8e707ff8 L00000060 o32 region_1 rva=00002000 vsize=00000060 real=dfd42000 psize=00001000 f=c0300040 for PhysicalMemory.dll
+8e707ff8 - 8e708000 L00000008 modname SYS.dll
+8e708000 - 8e7084db L000004db o32 region_0 rva=00001000 vsize=000004db real=dfff1000 psize=00001000 f=60000020 for oalioctl.dll
+8e7084dc - 8e708548 L0000006c e32 struct 3 objs, img=2122 entrypt=00001620 base=dfd40000 v7.0 tp0 PhysicalMemory.dll
+8e708548 - 8e70854c L00000004 unknown 09 00 00 00
+8e70854c - 8e708594 L00000048 o32 struct PhysicalMemory.dll
+8e708594 - 8e708600 L0000006c e32 struct 3 objs, img=2122 entrypt=00002fe4 base=dfd20000 v7.0 tp0 SUBCPU_SCIF.dll
+8e708600 - 8e708604 L00000004 unknown 09 00 00 00
+8e708604 - 8e70864c L00000048 o32 struct SUBCPU_SCIF.dll
+8e70864c - 8e7086b8 L0000006c e32 struct 3 objs, img=2122 entrypt=00003f94 base=dfd10000 v7.0 tp0 SYS.dll
+8e7086b8 - 8e7086bc L00000004 unknown 09 00 00 00
+8e7086bc - 8e708704 L00000048 o32 struct SYS.dll
+8e708704 - 8e708770 L0000006c e32 struct 3 objs, img=2122 entrypt=00008744 base=dfcf0000 v7.0 tp0 DRF.dll
+8e708770 - 8e708774 L00000004 unknown 09 00 00 00
+8e708774 - 8e7087bc L00000048 o32 struct DRF.dll
+8e7087bc - 8e708828 L0000006c e32 struct 3 objs, img=2122 entrypt=000098c4 base=dfcd0000 v7.0 tp0 DTD.dll
+8e708828 - 8e70882c L00000004 unknown 09 00 00 00
+8e70882c - 8e708874 L00000048 o32 struct DTD.dll
+8e708874 - 8e7088e0 L0000006c e32 struct 3 objs, img=2122 entrypt=0000be04 base=dfc90000 v7.0 tp0 MON.dll
+8e7088e0 - 8e7088e4 L00000004 unknown 09 00 00 00
+8e7088e4 - 8e70892c L00000048 o32 struct MON.dll
+8e70892c - 8e708998 L0000006c e32 struct 3 objs, img=2122 entrypt=00005238 base=dfc80000 v7.0 tp0 VIO.dll
+8e708998 - 8e70899c L00000004 unknown 09 00 00 00
+8e70899c - 8e7089e4 L00000048 o32 struct VIO.dll
+8e7089e4 - 8e708a50 L0000006c e32 struct 3 objs, img=2122 entrypt=0000c0b0 base=dfc60000 v7.0 tp0 sdmemory.dll
+8e708a50 - 8e708a54 L00000004 unknown 09 00 00 00
+8e708a54 - 8e708a9c L00000048 o32 struct sdmemory.dll
+8e708a9c - 8e708b08 L0000006c e32 struct 3 objs, img=2122 entrypt=000141a0 base=dfc40000 v7.0 tp0 sdbus.dll
+8e708b08 - 8e708b0c L00000004 unknown 09 00 00 00
+8e708b0c - 8e708b54 L00000048 o32 struct sdbus.dll
+8e708b54 - 8e708bc0 L0000006c e32 struct 3 objs, img=2122 entrypt=00001044 base=dfc30000 v7.0 tp0 SDDmacLib.dll
+8e708bc0 - 8e708bc4 L00000004 unknown 09 00 00 00
+8e708bc4 - 8e708c0c L00000048 o32 struct SDDmacLib.dll
+8e708c0c - 8e708c78 L0000006c e32 struct 3 objs, img=2122 entrypt=000069ec base=dfc10000 v7.0 tp0 sdhi.dll
+8e708c78 - 8e708c7c L00000004 unknown 09 00 00 00
+8e708c7c - 8e708cc4 L00000048 o32 struct sdhi.dll
+8e708cc4 - 8e708d30 L0000006c e32 struct 3 objs, img=2122 entrypt=00001044 base=dfc00000 v7.0 tp0 sdhi_isr.dll
+8e708d30 - 8e708d34 L00000004 unknown 09 00 00 00
+8e708d34 - 8e708d7c L00000048 o32 struct sdhi_isr.dll
+8e708d7c - 8e708de8 L0000006c e32 struct 3 objs, img=2122 entrypt=00001de4 base=dfbf0000 v7.0 tp0 usbd.dll
+8e708de8 - 8e708dec L00000004 unknown 09 00 00 00
+8e708dec - 8e708e34 L00000048 o32 struct usbd.dll
+8e708e34 - 8e708ea0 L0000006c e32 struct 3 objs, img=2122 entrypt=00004d18 base=dfbd0000 v7.0 tp0 ohci2.dll
+8e708ea0 - 8e708ea4 L00000004 unknown 09 00 00 00
+8e708ea4 - 8e708eec L00000048 o32 struct ohci2.dll
+8e708eec - 8e708f58 L0000006c e32 struct 3 objs, img=2122 entrypt=0000de7c base=dfbb0000 v7.0 tp0 ehci.dll
+8e708f58 - 8e708f5c L00000004 unknown 09 00 00 00
+8e708f5c - 8e708fa4 L00000048 o32 struct ehci.dll
+8e708fa4 - 8e708fec L00000048 o32 struct usbmsc.dll
+8e708fec - 8e708ff9 L0000000d filename normidna.nls
+8e708ff9 - 8e709000 L00000007 NUL
+8e709000 - 8e709058 L00000058 o32 region_2 rva=00003000 vsize=00000058 real=dfff3000 psize=00001000 f=40300040 for oalioctl.dll
+8e709058 - 8e70a000 L00000fa8 NUL
+8e70a000 - 8e76bc20 L00061c20 o32 region_0 rva=00001000 vsize=00061c20 real=dff71000 psize=00062000 f=68000020 for k.coredll.dll
+8e76bc20 - 8e76bd64 L00000144 o32 region_2 rva=00004000 vsize=000001b8 real=dfec4000 psize=00000144 f=40002040 for romfsd.dll
+8e76bd64 - 8e76bf8a L00000226 o32 region_2 rva=00006000 vsize=00000370 real=00016000 psize=00000226 f=48002040 for udevice.exe
+8e76bf8c - 8e76bfe8 L0000005c o32 region_1 rva=00002000 vsize=0000005c real=dfc32000 psize=00001000 f=c0300040 for SDDmacLib.dll
+8e76bfe8 - 8e76bff4 L0000000c modname udevice.exe
+8e76bff4 - 8e76bfff L0000000b modname devmgr.dll
+8e76c000 - 8e77b882 L0000f882 o32 region_0 rva=00001000 vsize=0000f882 real=40091000 psize=00010000 f=60000020 for locale.dll
+8e77b884 - 8e77befa L00000676 o32 region_4 rva=00010000 vsize=00000a5c real=400f0000 psize=00000676 f=c0002040 for fatutil.dll
+8e77befc - 8e77bfe4 L000000e8 o32 region_1 rva=00008000 vsize=000000e8 real=dfb98000 psize=00001000 f=c0300040 for usbdisk6.dll
+8e77bfe4 - 8e77bfee L0000000a modname ceddk.dll
+8e77bff0 - 8e77bffc L0000000c modname mmtimer.dll
+8e77bffc - 8e77c000 L00000004 NUL
+8e77c000 - 8e78c864 L00010864 o32 region_3 rva=00013000 vsize=00010864 real=400a3000 psize=00011000 f=40000040 for locale.dll
+8e78c864 - 8e78cac8 L00000264 o32 region_1 rva=0000e000 vsize=00006f7c real=4014e000 psize=00000264 f=c0002040 for cereg.dll
+8e78cac8 - 8e78ceec L00000424 o32 region_2 rva=00015000 vsize=000006c0 real=40155000 psize=00000424 f=40002040 for cereg.dll
+8e78ceec - 8e78cfc0 L000000d4 o32 region_1 rva=00005000 vsize=000000d4 real=dfb25000 psize=00001000 f=c0300040 for DVDWrap.dll
+8e78cfc0 - 8e78cfce L0000000e modname k.mmtimer.dll
+8e78cfd0 - 8e78cfdd L0000000d modname k.logdef.dll
+8e78cfe0 - 8e78cfeb L0000000b modname logdef.dll
+8e78cfec - 8e78cfff L00000013 modname PhysicalMemory.dll
+8e78d000 - 8e79c882 L0000f882 o32 region_0 rva=00001000 vsize=0000f882 real=dff41000 psize=00010000 f=60000020 for k.locale.dll
+8e79c884 - 8e79cb3c L000002b8 o32 region_2 rva=00009000 vsize=00000438 real=dfe19000 psize=000002b8 f=40002040 for relfsd.dll
+8e79cb3c - 8e79cd24 L000001e8 o32 region_2 rva=00011000 vsize=00000270 real=00021000 psize=000001e8 f=40002040 for shell.exe
+8e79cd24 - 8e79ce6e L0000014a o32 region_1 rva=00004000 vsize=00000374 real=40114000 psize=0000014a f=c0002040 for shellcelog.dll
+8e79ce70 - 8e79cfb6 L00000146 o32 region_2 rva=00005000 vsize=00000188 real=40115000 psize=00000146 f=40002040 for shellcelog.dll
+8e79cfb8 - 8e79d000 L00000048 o32 struct kernel.dll
+8e79d000 - 8e7ad864 L00010864 o32 region_3 rva=00013000 vsize=00010864 real=dff53000 psize=00011000 f=40000040 for k.locale.dll
+8e7ad864 - 8e7adb82 L0000031e o32 region_2 rva=00009000 vsize=00000528 real=40139000 psize=0000031e f=40002040 for DllHeapInfoExt.dll
+8e7adb84 - 8e7addc8 L00000244 o32 region_1 rva=0001b000 vsize=00000560 real=dfdeb000 psize=00000244 f=c8002040 for fsdmgr.dll
+8e7addc8 - 8e7adf48 L00000180 o32 region_2 rva=00007000 vsize=000001d0 real=dfdc7000 psize=00000180 f=40002040 for mspart.dll
+8e7adf48 - 8e7adff6 L000000ae o32 region_1 rva=00003000 vsize=00000394 real=00013000 psize=000000ae f=c0002040 for JITDbgrEXE.exe
+8e7adff6 - 8e7ae000 L0000000a NUL
+8e7ae000 - 8e7b3ed6 L00005ed6 o32 region_0 rva=00001000 vsize=00005ed6 real=400c1000 psize=00006000 f=60000020 for sorting.dll
+8e7b3ed8 - 8e7b3ed8 L00000000 o32 region_1 rva=0000f000 vsize=00002000 real=89f00000 psize=00000000 f=c0000080 for nk.exe
+8e7b3ed8 - 8e7b3f14 L0000003c o32 region_1 rva=00002000 vsize=0000003c real=dfff2000 psize=00001000 f=c0300040 for oalioctl.dll
+8e7b3f14 - 8e7b3fbc L000000a8 o32 region_1 rva=00007000 vsize=00000100 real=400c7000 psize=000000a8 f=c0002040 for sorting.dll
+8e7b3fbc - 8e7b3ff8 L0000003c o32 region_1 rva=00002000 vsize=0000003c real=dfeb2000 psize=00001000 f=c8300040 for device.dll
+8e7b3ff8 - 8e7b3ff8 L00000000 o32 region_1 rva=00002000 vsize=00000784 real=dfc02000 psize=00000000 f=c0000040 for sdhi_isr.dll
+8e7b3ff8 - 8e7b3fff L00000007 modname nk.exe
+8e7b4000 - 8e7b43d8 L000003d8 o32 region_3 rva=00009000 vsize=000003d8 real=400c9000 psize=00001000 f=40000040 for sorting.dll
+8e7b43d8 - 8e7b5000 L00000c28 NUL
+8e7b5000 - 8e7baed6 L00005ed6 o32 region_0 rva=00001000 vsize=00005ed6 real=dff31000 psize=00006000 f=60000020 for k.sorting.dll
+8e7baed8 - 8e7bafee L00000116 o32 region_1 rva=00011000 vsize=00000154 real=400a1000 psize=00000116 f=c0002040 for locale.dll
+8e7baff0 - 8e7baff9 L00000009 modname kitl.dll
+8e7baff9 - 8e7bb000 L00000007 NUL
+8e7bb000 - 8e7bb3d8 L000003d8 o32 region_3 rva=00009000 vsize=000003d8 real=dff39000 psize=00001000 f=40000040 for k.sorting.dll
+8e7bb3d8 - 8e7bc000 L00000c28 NUL
+8e7bc000 - 8e7c041f L0000441f o32 region_0 rva=00001000 vsize=0000441f real=400d1000 psize=00005000 f=60000020 for normalize.dll
+8e7c0420 - 8e7c0f57 L00000b37 filedata autopriv.p7b
+8e7c0f57 - 8e7c1000 L000000a9 NUL
+8e7c1000 - 8e7c541f L0000441f o32 region_0 rva=00001000 vsize=0000441f real=dff21000 psize=00005000 f=60000020 for k.normalize.dll
+8e7c5420 - 8e7c5ffd L00000bdd o32 region_2 rva=0001c000 vsize=00001650 real=dfdec000 psize=00000bdd f=48002040 for fsdmgr.dll
+8e7c6000 - 8e7f4d9a L0002ed9a o32 region_0 rva=00001000 vsize=0002ed9a real=dfed1000 psize=0002f000 f=60000020 for filesys.dll
+8e7f4d9c - 8e7f4f30 L00000194 o32 region_2 rva=00007000 vsize=000001f8 real=dff27000 psize=00000194 f=40002040 for k.normalize.dll
+8e7f4f30 - 8e7f5000 L000000d0 o32 region_1 rva=00005000 vsize=000000d0 real=00015000 psize=00001000 f=c8300040 for udevice.exe
+8e7f5000 - 8e7f6ab2 L00001ab2 o32 region_0 rva=00001000 vsize=00001ab2 real=dfec1000 psize=00002000 f=60000020 for romfsd.dll
+8e7f6ab4 - 8e7f6ee6 L00000432 o32 region_2 rva=00012000 vsize=000006d8 real=dff52000 psize=00000432 f=40002040 for k.locale.dll
+8e7f6ee8 - 8e7f6ffe L00000116 o32 region_1 rva=00006000 vsize=00000128 real=dfd96000 psize=00000116 f=c8002040 for k.ceddk.dll
+8e7f7000 - 8e7f745a L0000045a o32 region_0 rva=00001000 vsize=0000045a real=dfeb1000 psize=00001000 f=68000020 for device.dll
+8e7f745c - 8e7f76ee L00000292 filedata autospc.p7b
+8e7f76ee - 8e7f8000 L00000912 NUL
+8e7f8000 - 8e7f8058 L00000058 o32 region_2 rva=00003000 vsize=00000058 real=dfeb3000 psize=00001000 f=48300040 for device.dll
+8e7f8058 - 8e7f9000 L00000fa8 NUL
+8e7f9000 - 8e7fcaec L00003aec o32 region_0 rva=00001000 vsize=00003aec real=00011000 psize=00004000 f=68000020 for udevice.exe
+8e7fcaec - 8e7fcf1e L00000432 o32 region_2 rva=00012000 vsize=000006d8 real=400a2000 psize=00000432 f=40002040 for locale.dll
+8e7fcf20 - 8e7fcfe2 L000000c2 o32 region_1 rva=00003000 vsize=00000400 real=dfd83000 psize=000000c2 f=c0002040 for k.mmtimer.dll
+8e7fcfe4 - 8e7fcff2 L0000000e modname diskcache.dll
+8e7fcff4 - 8e7fd000 L0000000c modname fatutil.dll
+8e7fd000 - 8e80c3bf L0000f3bf o32 region_0 rva=00001000 vsize=0000f3bf real=dfe91000 psize=00010000 f=68000020 for devmgr.dll
+8e80c3bf - 8e80d000 L00000c41 NUL
+8e80d000 - 8e80dec3 L00000ec3 o32 region_0 rva=00001000 vsize=00000ec3 real=dfe81000 psize=00001000 f=60000020 for regenum.dll
+8e80dec4 - 8e80dfda L00000116 o32 region_1 rva=00011000 vsize=00000154 real=dff51000 psize=00000116 f=c0002040 for k.locale.dll
+8e80dfdc - 8e80dfe7 L0000000b modname kernel.dll
+8e80dfe8 - 8e80dff4 L0000000c modname coredll.dll
+8e80dff4 - 8e80dfff L0000000b modname locale.dll
+8e80e000 - 8e80e0a0 L000000a0 o32 region_2 rva=00003000 vsize=000000a0 real=dfe83000 psize=00001000 f=40300040 for regenum.dll
+8e80e0a0 - 8e80f000 L00000f60 NUL
+8e80f000 - 8e8113cd L000023cd o32 region_0 rva=00001000 vsize=000023cd real=dfe71000 psize=00003000 f=60000020 for busenum.dll
+8e8113cd - 8e812000 L00000c33 NUL
+8e812000 - 8e82436b L0001236b o32 region_0 rva=00001000 vsize=0001236b real=dfe51000 psize=00013000 f=60000020 for exfat.dll
+8e82436b - 8e825000 L00000c95 NUL
+8e825000 - 8e826d5f L00001d5f o32 region_0 rva=00001000 vsize=00001d5f real=dfe41000 psize=00002000 f=60000020 for diskcache.dll
+8e826d60 - 8e826ff8 L00000298 o32 region_3 rva=00008000 vsize=0000038a real=400d8000 psize=00000298 f=c0002040 for normalize.dll
+8e826ff8 - 8e827000 L00000008 modname MON.dll
+8e827000 - 8e83176f L0000a76f o32 region_0 rva=00001000 vsize=0000a76f real=400e1000 psize=0000b000 f=60000020 for fatutil.dll
+8e831770 - 8e831a2f L000002bf o32 region_1 rva=00018000 vsize=00015eb0 real=dfca8000 psize=000002bf f=c0002040 for MON.dll
+8e831a30 - 8e831cf2 L000002c2 o32 region_2 rva=0002e000 vsize=000003f0 real=dfcbe000 psize=000002c2 f=40002040 for MON.dll
+8e831cf4 - 8e831ed2 L000001de o32 region_2 rva=00009000 vsize=000002c8 real=dfc89000 psize=000001de f=40002040 for VIO.dll
+8e831ed4 - 8e831ff6 L00000122 o32 region_1 rva=00003000 vsize=000004c8 real=40193000 psize=00000122 f=c0002040 for ceusbkwrapper.dll
+8e831ff6 - 8e832000 L0000000a NUL
+8e832000 - 8e833324 L00001324 o32 region_3 rva=0000e000 vsize=00001324 real=400ee000 psize=00002000 f=40000040 for fatutil.dll
+8e833324 - 8e834000 L00000cdc NUL
+8e834000 - 8e83e76f L0000a76f o32 region_0 rva=00001000 vsize=0000a76f real=dfe21000 psize=0000b000 f=60000020 for k.fatutil.dll
+8e83e770 - 8e83ecc8 L00000558 o32 region_1 rva=00008000 vsize=00000f90 real=dfd18000 psize=00000558 f=c0002040 for SYS.dll
+8e83ecc8 - 8e83eedc L00000214 o32 region_2 rva=00010000 vsize=000002e8 real=dfce0000 psize=00000214 f=40002040 for DTD.dll
+8e83eedc - 8e83eff4 L00000118 o32 region_1 rva=00007000 vsize=00000134 real=dfba7000 psize=00000118 f=c0002040 for usbmsc.dll
+8e83eff4 - 8e83effe L0000000a modname ohci2.dll
+8e83f000 - 8e840324 L00001324 o32 region_3 rva=0000e000 vsize=00001324 real=dfe2e000 psize=00002000 f=40000040 for k.fatutil.dll
+8e840324 - 8e841000 L00000cdc NUL
+8e841000 - 8e847cba L00006cba o32 region_0 rva=00001000 vsize=00006cba real=dfe11000 psize=00007000 f=60000020 for relfsd.dll
+8e847cbc - 8e847fd2 L00000316 o32 region_1 rva=00066000 vsize=00001ac0 real=40076000 psize=00000316 f=c8002040 for coredll.dll
+8e847fd4 - 8e847fe4 L00000010 modname k.normalize.dll
+8e847fe4 - 8e847ff0 L0000000c modname filesys.dll
+8e847ff0 - 8e847ffb L0000000b modname romfsd.dll
+8e847ffb - 8e848000 L00000005 NUL
+8e848000 - 8e84871d L0000071d o32 region_0 rva=00001000 vsize=0000071d real=40101000 psize=00001000 f=60000020 for relfsdext.dll
+8e848720 - 8e848870 L00000150 o32 region_1 rva=0000d000 vsize=000001a4 real=dfc6d000 psize=00000150 f=c0002040 for sdmemory.dll
+8e848870 - 8e848b7a L0000030a o32 region_2 rva=0000e000 vsize=000004c0 real=dfc6e000 psize=0000030a f=40002040 for sdmemory.dll
+8e848b7c - 8e848ce2 L00000166 o32 region_1 rva=00015000 vsize=00000208 real=dfc55000 psize=00000166 f=c0002040 for sdbus.dll
+8e848ce4 - 8e848e30 L0000014c o32 region_1 rva=0000c000 vsize=000001c0 real=dfc1c000 psize=0000014c f=c0002040 for sdhi.dll
+8e848e30 - 8e848f92 L00000162 o32 region_1 rva=00007000 vsize=00000194 real=dfbf7000 psize=00000162 f=c0002040 for usbd.dll
+8e848f94 - 8e848fdc L00000048 o32 struct k.coredll.dll
+8e848fdc - 8e848fe5 L00000009 modname ehci.dll
+8e848fe8 - 8e848ff3 L0000000b modname usbmsc.dll
+8e848ff4 - 8e849000 L0000000c modname DVDWrap.dll
+8e849000 - 8e849058 L00000058 o32 region_2 rva=00003000 vsize=00000058 real=40103000 psize=00001000 f=40300040 for relfsdext.dll
+8e849058 - 8e84a000 L00000fa8 NUL
+8e84a000 - 8e8570b2 L0000d0b2 o32 region_0 rva=00001000 vsize=0000d0b2 real=00011000 psize=0000e000 f=60000020 for shell.exe
+8e8570b2 - 8e858000 L00000f4e NUL
+8e858000 - 8e85aa45 L00002a45 o32 region_0 rva=00001000 vsize=00002a45 real=40111000 psize=00003000 f=60000020 for shellcelog.dll
+8e85aa48 - 8e85adc2 L0000037a o32 region_2 rva=0000d000 vsize=00000548 real=400ed000 psize=0000037a f=40002040 for fatutil.dll
+8e85adc4 - 8e85aefc L00000138 o32 region_1 rva=00008000 vsize=00000928 real=dfe18000 psize=00000138 f=c0002040 for relfsd.dll
+8e85aefc - 8e85af9c L000000a0 o32 region_1 rva=00006000 vsize=000023c0 real=dfc86000 psize=000000a0 f=c0002040 for VIO.dll
+8e85af9c - 8e85affc L00000060 o32 struct nk.exe
+8e85affc - 8e85b000 L00000004 NUL
+8e85b000 - 8e85bdbf L00000dbf o32 region_0 rva=00001000 vsize=00000dbf real=40121000 psize=00001000 f=60000020 for toolhelp.dll
+8e85bdc0 - 8e85bf4e L0000018e o32 region_2 rva=00008000 vsize=000001d8 real=400c8000 psize=0000018e f=40002040 for sorting.dll
+8e85bf50 - 8e85bfd0 L00000080 o32 region_1 rva=00002000 vsize=00000080 real=dfe82000 psize=00001000 f=c0300040 for regenum.dll
+8e85bfd0 - 8e85bfde L0000000e modname k.coredll.dll
+8e85bfe0 - 8e85bfed L0000000d modname k.locale.dll
+8e85bff0 - 8e85bffc L0000000c modname sorting.dll
+8e85bffc - 8e85c000 L00000004 NUL
+8e85c000 - 8e85c0e0 L000000e0 o32 region_2 rva=00003000 vsize=000000e0 real=40123000 psize=00001000 f=40300040 for toolhelp.dll
+8e85c0e0 - 8e85d000 L00000f20 NUL
+8e85d000 - 8e85d0c0 L000000c0 o32 region_3 rva=00004000 vsize=000000c0 real=40124000 psize=00001000 f=40000040 for toolhelp.dll
+8e85d0c0 - 8e85e000 L00000f40 NUL
+8e85e000 - 8e85edbf L00000dbf o32 region_0 rva=00001000 vsize=00000dbf real=dfe01000 psize=00001000 f=60000020 for k.toolhelp.dll
+8e85edc0 - 8e85ef4c L0000018c o32 region_2 rva=00008000 vsize=000001d8 real=dff38000 psize=0000018c f=40002040 for k.sorting.dll
+8e85ef4c - 8e85ef8c L00000040 o32 region_1 rva=00002000 vsize=00000040 real=40102000 psize=00001000 f=c0300040 for relfsdext.dll
+8e85ef8c - 8e85efe0 L00000054 o32 region_1 rva=00002000 vsize=00000054 real=40122000 psize=00001000 f=c0300040 for toolhelp.dll
+8e85efe0 - 8e85efee L0000000e modname k.sorting.dll
+8e85eff0 - 8e85effe L0000000e modname normalize.dll
+8e85f000 - 8e85f0e0 L000000e0 o32 region_2 rva=00003000 vsize=000000e0 real=dfe03000 psize=00001000 f=40300040 for k.toolhelp.dll
+8e85f0e0 - 8e860000 L00000f20 NUL
+8e860000 - 8e8600c0 L000000c0 o32 region_3 rva=00004000 vsize=000000c0 real=dfe04000 psize=00001000 f=40000040 for k.toolhelp.dll
+8e8600c0 - 8e861000 L00000f40 NUL
+8e861000 - 8e867072 L00006072 o32 region_0 rva=00001000 vsize=00006072 real=40131000 psize=00007000 f=60000020 for DllHeapInfoExt.dll
+8e867072 - 8e868000 L00000f8e NUL
+8e868000 - 8e88184f L0001984f o32 region_0 rva=00001000 vsize=0001984f real=dfdd1000 psize=0001a000 f=68000020 for fsdmgr.dll
+8e881850 - 8e881ab4 L00000264 o32 region_1 rva=0000e000 vsize=00006f7c real=dfdae000 psize=00000264 f=c0002040 for k.cereg.dll
+8e881ab4 - 8e881ed8 L00000424 o32 region_2 rva=00015000 vsize=000006c0 real=dfdb5000 psize=00000424 f=40002040 for k.cereg.dll
+8e881ed8 - 8e881fee L00000116 o32 region_1 rva=00006000 vsize=00000128 real=40166000 psize=00000116 f=c8002040 for ceddk.dll
+8e881ff0 - 8e882000 L00000010 modname SUBCPU_SCIF.dll
+8e882000 - 8e8863c5 L000043c5 o32 region_0 rva=00001000 vsize=000043c5 real=dfdc1000 psize=00005000 f=60000020 for mspart.dll
+8e8863c5 - 8e887000 L00000c3b NUL
+8e887000 - 8e893689 L0000c689 o32 region_0 rva=00001000 vsize=0000c689 real=40141000 psize=0000d000 f=60000020 for cereg.dll
+8e89368c - 8e893c10 L00000584 o32 region_2 rva=00013000 vsize=000009e8 real=dfbe3000 psize=00000584 f=40002040 for ohci2.dll
+8e893c10 - 8e893d82 L00000172 o32 region_2 rva=00009000 vsize=000001a0 real=dfb99000 psize=00000172 f=40002040 for usbdisk6.dll
+8e893d84 - 8e893f10 L0000018c o32 region_1 rva=00009000 vsize=00027cb4 real=dfb59000 psize=0000018c f=c0002040 for JITDbgrDLL.dll
+8e893f10 - 8e893f7c L0000006c e32 struct 3 objs, img=2122 entrypt=00001214 base=dfff0000 v7.0 tp0 oalioctl.dll
+8e893f7c - 8e893f80 L00000004 unknown 09 00 00 00
+8e893f80 - 8e893fec L0000006c e32 struct 3 objs, img=2122 entrypt=0000843c base=dff70000 v7.0 tp0 k.coredll.dll
+8e893fec - 8e893ff0 L00000004 unknown 09 00 00 00
+8e893ff0 - 8e893ffa L0000000a filename wince.nls
+8e893ffa - 8e894000 L00000006 NUL
+8e894000 - 8e8a0689 L0000c689 o32 region_0 rva=00001000 vsize=0000c689 real=dfda1000 psize=0000d000 f=60000020 for k.cereg.dll
+8e8a068c - 8e8a0da2 L00000716 o32 region_2 rva=00019000 vsize=00000ce0 real=dfbc9000 psize=00000716 f=40002040 for ehci.dll
+8e8a0da4 - 8e8a0f4a L000001a6 o32 region_2 rva=00031000 vsize=000001f8 real=dfb81000 psize=000001a6 f=40002040 for JITDbgrDLL.dll
+8e8a0f4c - 8e8a0fb8 L0000006c e32 struct 5 objs, img=2122 entrypt=00010068 base=40090000 v7.0 tp0 locale.dll
+8e8a0fb8 - 8e8a0fbc L00000004 unknown 09 00 00 00
+8e8a0fbc - 8e8a0fce L00000012 modname ceusbkwrapper.dll
+8e8a0fd0 - 8e8a0fe5 L00000015 modname ceusbkwrapperdrv.dll
+8e8a0fe8 - 8e8a0ff4 L0000000c filename initobj.dat
+8e8a0ff4 - 8e8a1000 L0000000c filename default.fdf
+8e8a1000 - 8e8a552c L0000452c o32 region_0 rva=00001000 vsize=0000452c real=dfd91000 psize=00005000 f=68000020 for k.ceddk.dll
+8e8a552c - 8e8a5598 L0000006c e32 struct 5 objs, img=2122 entrypt=0000194c base=40120000 v7.0 tp0 toolhelp.dll
+8e8a5598 - 8e8a559c L00000004 unknown 09 00 00 00
+8e8a559c - 8e8a5614 L00000078 o32 struct toolhelp.dll
+8e8a5614 - 8e8a5680 L0000006c e32 struct 4 objs, img=2122 entrypt=0000194c base=dfe00000 v7.0 tp0 k.toolhelp.dll
+8e8a5680 - 8e8a5684 L00000004 unknown 09 00 00 00
+8e8a5684 - 8e8a56e4 L00000060 o32 struct k.toolhelp.dll
+8e8a56e4 - 8e8a5750 L0000006c e32 struct 3 objs, img=2122 entrypt=00006a8c base=40130000 v7.0 tp0 DllHeapInfoExt.dll
+8e8a5750 - 8e8a5754 L00000004 unknown 09 00 00 00
+8e8a5754 - 8e8a579c L00000048 o32 struct DllHeapInfoExt.dll
+8e8a579c - 8e8a5808 L0000006c e32 struct 3 objs, img=2122 entrypt=000189d8 base=dfdd0000 v7.0 tp0 fsdmgr.dll
+8e8a5808 - 8e8a580c L00000004 unknown 09 00 00 00
+8e8a580c - 8e8a5854 L00000048 o32 struct fsdmgr.dll
+8e8a5854 - 8e8a58c0 L0000006c e32 struct 3 objs, img=2122 entrypt=00004dd4 base=dfdc0000 v7.0 tp0 mspart.dll
+8e8a58c0 - 8e8a58c4 L00000004 unknown 09 00 00 00
+8e8a58c4 - 8e8a590c L00000048 o32 struct mspart.dll
+8e8a590c - 8e8a5978 L0000006c e32 struct 4 objs, img=2122 entrypt=0000ca00 base=40140000 v7.0 tp0 cereg.dll
+8e8a5978 - 8e8a597c L00000004 unknown 09 00 00 00
+8e8a597c - 8e8a59dc L00000060 o32 struct cereg.dll
+8e8a59dc - 8e8a5a48 L0000006c e32 struct 3 objs, img=2122 entrypt=0000ca00 base=dfda0000 v7.0 tp0 k.cereg.dll
+8e8a5a48 - 8e8a5a4c L00000004 unknown 09 00 00 00
+8e8a5a4c - 8e8a5a94 L00000048 o32 struct k.cereg.dll
+8e8a5a94 - 8e8a5b00 L0000006c e32 struct 3 objs, img=2122 entrypt=00004714 base=dfd90000 v7.0 tp0 k.ceddk.dll
+8e8a5b00 - 8e8a5b04 L00000004 unknown 09 00 00 00
+8e8a5b04 - 8e8a5b4c L00000048 o32 struct k.ceddk.dll
+8e8a5b4c - 8e8a5bb8 L0000006c e32 struct 3 objs, img=2122 entrypt=00004714 base=40160000 v7.0 tp0 ceddk.dll
+8e8a5bb8 - 8e8a5bbc L00000004 unknown 09 00 00 00
+8e8a5bbc - 8e8a5c04 L00000048 o32 struct ceddk.dll
+8e8a5c04 - 8e8a5c70 L0000006c e32 struct 4 objs, img=2122 entrypt=00001cc8 base=40170000 v7.0 tp0 mmtimer.dll
+8e8a5c70 - 8e8a5c74 L00000004 unknown 09 00 00 00
+8e8a5c74 - 8e8a5cd4 L00000060 o32 struct mmtimer.dll
+8e8a5cd4 - 8e8a5d40 L0000006c e32 struct 3 objs, img=2122 entrypt=00001cc8 base=dfd80000 v7.0 tp0 k.mmtimer.dll
+8e8a5d40 - 8e8a5d44 L00000004 unknown 09 00 00 00
+8e8a5d44 - 8e8a5d8c L00000048 o32 struct k.mmtimer.dll
+8e8a5d8c - 8e8a5df8 L0000006c e32 struct 3 objs, img=2122 entrypt=00009d84 base=dfd60000 v7.0 tp0 LGD.dll
+8e8a5df8 - 8e8a5dfc L00000004 unknown 09 00 00 00
+8e8a5dfc - 8e8a5e44 L00000048 o32 struct LGD.dll
+8e8a5e44 - 8e8a5eb0 L0000006c e32 struct 4 objs, img=2102 entrypt=00001108 base=dfd50000 v7.0 tp0 k.logdef.dll
+8e8a5eb0 - 8e8a5eb4 L00000004 unknown 09 00 00 00
+8e8a5eb4 - 8e8a5f14 L00000060 o32 struct k.logdef.dll
+8e8a5f14 - 8e8a5f80 L0000006c e32 struct 4 objs, img=2102 entrypt=00001108 base=40180000 v7.0 tp0 logdef.dll
+8e8a5f80 - 8e8a5f84 L00000004 unknown 09 00 00 00
+8e8a5f84 - 8e8a5fe4 L00000060 o32 struct logdef.dll
+8e8a5fe4 - 8e8a5ff1 L0000000d filename normnfkd.nls
+8e8a5ff4 - 8e8a5fff L0000000b filename locale.nls
+8e8a6000 - 8e8aa52c L0000452c o32 region_0 rva=00001000 vsize=0000452c real=40161000 psize=00005000 f=68000020 for ceddk.dll
+8e8aa52c - 8e8aa598 L0000006c e32 struct 3 objs, img=2122 entrypt=0002e3a8 base=dfed0000 v7.0 tp0 filesys.dll
+8e8aa598 - 8e8aa59c L00000004 unknown 09 00 00 00
+8e8aa59c - 8e8aa608 L0000006c e32 struct 3 objs, img=2122 entrypt=00002294 base=dfec0000 v7.0 tp0 romfsd.dll
+8e8aa608 - 8e8aa60c L00000004 unknown 09 00 00 00
+8e8aa60c - 8e8aa654 L00000048 o32 struct romfsd.dll
+8e8aa654 - 8e8aa6c0 L0000006c e32 struct 3 objs, img=2122 entrypt=00001184 base=dfeb0000 v7.0 tp0 device.dll
+8e8aa6c0 - 8e8aa6c4 L00000004 unknown 09 00 00 00
+8e8aa6c4 - 8e8aa70c L00000048 o32 struct device.dll
+8e8aa70c - 8e8aa778 L0000006c e32 struct 3 objs, img=0122 entrypt=00001450 base=00010000 v7.0 tp0 udevice.exe
+8e8aa778 - 8e8aa77c L00000004 unknown 09 00 00 00
+8e8aa77c - 8e8aa7c4 L00000048 o32 struct udevice.exe
+8e8aa7c4 - 8e8aa830 L0000006c e32 struct 3 objs, img=2122 entrypt=0000f748 base=dfe90000 v7.0 tp0 devmgr.dll
+8e8aa830 - 8e8aa834 L00000004 unknown 09 00 00 00
+8e8aa834 - 8e8aa87c L00000048 o32 struct devmgr.dll
+8e8aa87c - 8e8aa8e8 L0000006c e32 struct 3 objs, img=2122 entrypt=00001a90 base=dfe80000 v7.0 tp0 regenum.dll
+8e8aa8e8 - 8e8aa8ec L00000004 unknown 09 00 00 00
+8e8aa8ec - 8e8aa934 L00000048 o32 struct regenum.dll
+8e8aa934 - 8e8aa9a0 L0000006c e32 struct 3 objs, img=2122 entrypt=00002ef4 base=dfe70000 v7.0 tp0 busenum.dll
+8e8aa9a0 - 8e8aa9a4 L00000004 unknown 09 00 00 00
+8e8aa9a4 - 8e8aa9ec L00000048 o32 struct busenum.dll
+8e8aa9ec - 8e8aaa58 L0000006c e32 struct 3 objs, img=2122 entrypt=00012718 base=dfe50000 v7.0 tp0 exfat.dll
+8e8aaa58 - 8e8aaa5c L00000004 unknown 09 00 00 00
+8e8aaa5c - 8e8aaaa4 L00000048 o32 struct exfat.dll
+8e8aaaa4 - 8e8aab10 L0000006c e32 struct 3 objs, img=2122 entrypt=000028c8 base=dfe40000 v7.0 tp0 diskcache.dll
+8e8aab10 - 8e8aab14 L00000004 unknown 09 00 00 00
+8e8aab14 - 8e8aab5c L00000048 o32 struct diskcache.dll
+8e8aab5c - 8e8aabc8 L0000006c e32 struct 5 objs, img=2122 entrypt=0000b06c base=400e0000 v7.0 tp0 fatutil.dll
+8e8aabc8 - 8e8aabcc L00000004 unknown 09 00 00 00
+8e8aabcc - 8e8aac44 L00000078 o32 struct fatutil.dll
+8e8aac44 - 8e8aacb0 L0000006c e32 struct 4 objs, img=2122 entrypt=0000b06c base=dfe20000 v7.0 tp0 k.fatutil.dll
+8e8aacb0 - 8e8aacb4 L00000004 unknown 09 00 00 00
+8e8aacb4 - 8e8aad14 L00000060 o32 struct k.fatutil.dll
+8e8aad14 - 8e8aad80 L0000006c e32 struct 3 objs, img=2122 entrypt=00007314 base=dfe10000 v7.0 tp0 relfsd.dll
+8e8aad80 - 8e8aad84 L00000004 unknown 09 00 00 00
+8e8aad84 - 8e8aadcc L00000048 o32 struct relfsd.dll
+8e8aadcc - 8e8aae38 L0000006c e32 struct 3 objs, img=2122 entrypt=00001444 base=40100000 v7.0 tp0 relfsdext.dll
+8e8aae38 - 8e8aae3c L00000004 unknown 09 00 00 00
+8e8aae3c - 8e8aae84 L00000048 o32 struct relfsdext.dll
+8e8aae84 - 8e8aaef0 L0000006c e32 struct 3 objs, img=0122 entrypt=0000d93c base=00010000 v7.0 tp0 shell.exe
+8e8aaef0 - 8e8aaef4 L00000004 unknown 09 00 00 00
+8e8aaef4 - 8e8aaf3c L00000048 o32 struct shell.exe
+8e8aaf3c - 8e8aafa8 L0000006c e32 struct 3 objs, img=2122 entrypt=00003514 base=40110000 v7.0 tp0 shellcelog.dll
+8e8aafa8 - 8e8aafac L00000004 unknown 09 00 00 00
+8e8aafac - 8e8aaff4 L00000048 o32 struct shellcelog.dll
+8e8aaff4 - 8e8ab000 L0000000c filename scripts.nls
+8e8ab000 - 8e8ac0b3 L000010b3 o32 region_0 rva=00001000 vsize=000010b3 real=40171000 psize=00002000 f=60000020 for mmtimer.dll
+8e8ac0b3 - 8e8ad000 L00000f4d NUL
+8e8ad000 - 8e8ad0c8 L000000c8 o32 region_2 rva=00004000 vsize=000000c8 real=40174000 psize=00001000 f=40300040 for mmtimer.dll
+8e8ad0c8 - 8e8ae000 L00000f38 NUL
+8e8ae000 - 8e8af0b3 L000010b3 o32 region_0 rva=00001000 vsize=000010b3 real=dfd81000 psize=00002000 f=60000020 for k.mmtimer.dll
+8e8af0b3 - 8e8b0000 L00000f4d NUL
+8e8b0000 - 8e8b00c8 L000000c8 o32 region_2 rva=00004000 vsize=000000c8 real=dfd84000 psize=00001000 f=40300040 for k.mmtimer.dll
+8e8b00c8 - 8e8b1000 L00000f38 NUL
+8e8b1000 - 8e8c21af L000111af o32 region_0 rva=00001000 vsize=000111af real=dfd61000 psize=00012000 f=60000020 for LGD.dll
+8e8c21b0 - 8e8c2fec L00000e3c o32 region_1 rva=0003d000 vsize=00005828 real=89f69000 psize=00000e3c f=c0000040 for kernel.dll
+8e8c2fec - 8e8c3000 L00000014 NUL
+8e8c3000 - 8e8c3300 L00000300 o32 region_0 rva=00001000 vsize=00000300 real=dfd51000 psize=00000400 f=60000020 for k.logdef.dll
+8e8c3300 - 8e8c4000 L00000d00 NUL
+8e8c4000 - 8e8c47c3 L000007c3 o32 region_1 rva=00002000 vsize=000007c3 real=dfd52000 psize=00000800 f=40000040 for k.logdef.dll
+8e8c47c4 - 8e8c4a60 L0000029c o32 region_2 rva=00014000 vsize=00000390 real=dfd74000 psize=0000029c f=40002040 for LGD.dll
+8e8c4a60 - 8e8c4cea L0000028a o32 region_2 rva=00003000 vsize=00000e50 real=dfd53000 psize=0000028a f=c0002040 for k.logdef.dll
+8e8c4cec - 8e8c4f76 L0000028a o32 region_2 rva=00003000 vsize=00000e50 real=40183000 psize=0000028a f=c0002040 for logdef.dll
+8e8c4f78 - 8e8c4fd8 L00000060 o32 struct coredll.dll
+8e8c4fd8 - 8e8c4fe2 L0000000a modname sdbus.dll
+8e8c4fe4 - 8e8c4ff2 L0000000e modname SDDmacLib.dll
+8e8c4ff4 - 8e8c4ffd L00000009 modname sdhi.dll
+8e8c5000 - 8e8c5048 L00000048 o32 region_3 rva=00004000 vsize=00000048 real=dfd54000 psize=00000200 f=40300040 for k.logdef.dll
+8e8c5048 - 8e8c6000 L00000fb8 NUL
+8e8c6000 - 8e8c6300 L00000300 o32 region_0 rva=00001000 vsize=00000300 real=40181000 psize=00000400 f=60000020 for logdef.dll
+8e8c6300 - 8e8c7000 L00000d00 NUL
+8e8c7000 - 8e8c77c3 L000007c3 o32 region_1 rva=00002000 vsize=000007c3 real=40182000 psize=00000800 f=40000040 for logdef.dll
+8e8c77c4 - 8e8c79e4 L00000220 o32 region_2 rva=00007000 vsize=00000330 real=dfd97000 psize=00000220 f=48002040 for k.ceddk.dll
+8e8c79e4 - 8e8c7c02 L0000021e o32 region_2 rva=00007000 vsize=00000330 real=40167000 psize=0000021e f=48002040 for ceddk.dll
+8e8c7c04 - 8e8c7dc8 L000001c4 o32 region_3 rva=00005000 vsize=00000214 real=40175000 psize=000001c4 f=c0002040 for mmtimer.dll
+8e8c7dc8 - 8e8c7f7e L000001b6 o32 region_1 rva=00013000 vsize=00000b14 real=dfd73000 psize=000001b6 f=c0002040 for LGD.dll
+8e8c7f80 - 8e8c7fec L0000006c e32 struct 4 objs, img=2122 entrypt=0000849c base=40010000 v7.0 tp0 coredll.dll
+8e8c7fec - 8e8c7ff0 L00000004 unknown 09 00 00 00
+8e8c7ff0 - 8e8c7ffd L0000000d modname sdmemory.dll
+8e8c8000 - 8e8c8048 L00000048 o32 region_3 rva=00004000 vsize=00000048 real=40184000 psize=00000200 f=40300040 for logdef.dll
+8e8c8048 - 8e8c9000 L00000fb8 NUL
+8e8c9000 - 8e8c99ed L000009ed o32 region_0 rva=00001000 vsize=000009ed real=dfd41000 psize=00001000 f=60000020 for PhysicalMemory.dll
+8e8c99f0 - 8e8c9fd5 L000005e5 o32 region_1 rva=00010000 vsize=00049788 real=89f1d000 psize=000005e5 f=c0000040 for kitl.dll
+8e8c9fd8 - 8e8c9fe6 L0000000e modname k.fatutil.dll
+8e8c9fe8 - 8e8c9ff3 L0000000b modname relfsd.dll
+8e8c9ff4 - 8e8c9ffe L0000000a modname shell.exe
+8e8ca000 - 8e8ca040 L00000040 o32 region_2 rva=00003000 vsize=00000040 real=dfd43000 psize=00001000 f=40300040 for PhysicalMemory.dll
+8e8ca040 - 8e8cb000 L00000fc0 NUL
+8e8cb000 - 8e8d0a4f L00005a4f o32 region_0 rva=00001000 vsize=00005a4f real=dfd21000 psize=00006000 f=60000020 for SUBCPU_SCIF.dll
+8e8d0a50 - 8e8d0b84 L00000134 o32 region_2 rva=00004000 vsize=00000168 real=dfe44000 psize=00000134 f=40002040 for diskcache.dll
+8e8d0b84 - 8e8d0d2e L000001aa o32 region_1 rva=0000c000 vsize=00000ca8 real=400ec000 psize=000001aa f=c0002040 for fatutil.dll
+8e8d0d30 - 8e8d0ed4 L000001a4 o32 region_1 rva=0000c000 vsize=00000ca8 real=dfe2c000 psize=000001a4 f=c0002040 for k.fatutil.dll
+8e8d0ed4 - 8e8d0ffe L0000012a o32 region_4 rva=00005000 vsize=0000014a real=40125000 psize=0000012a f=c0002040 for toolhelp.dll
+8e8d1000 - 8e8d7bdf L00006bdf o32 region_0 rva=00001000 vsize=00006bdf real=dfd11000 psize=00007000 f=60000020 for SYS.dll
+8e8d7be0 - 8e8d7d4a L0000016a o32 region_2 rva=00005000 vsize=00000200 real=dfe75000 psize=0000016a f=40002040 for busenum.dll
+8e8d7d4c - 8e8d7f2a L000001de o32 region_1 rva=00014000 vsize=000002e4 real=dfe64000 psize=000001de f=c0002040 for exfat.dll
+8e8d7f2c - 8e8d7fee L000000c2 o32 region_1 rva=00003000 vsize=00000400 real=40173000 psize=000000c2 f=c0002040 for mmtimer.dll
+8e8d7ff0 - 8e8d7ffa L0000000a modname exfat.dll
+8e8d7ffa - 8e8d8000 L00000006 NUL
+8e8d8000 - 8e8e3d9f L0000bd9f o32 region_0 rva=00001000 vsize=0000bd9f real=dfcf1000 psize=0000c000 f=60000020 for DRF.dll
+8e8e3da0 - 8e8e3f32 L00000192 o32 region_2 rva=00007000 vsize=000001f8 real=400d7000 psize=00000192 f=40002040 for normalize.dll
+8e8e3f34 - 8e8e3ff8 L000000c4 o32 region_1 rva=00003000 vsize=000000c4 real=dfe43000 psize=00001000 f=c0300040 for diskcache.dll
+8e8e3ff8 - 8e8e4000 L00000008 modname DTD.dll
+8e8e4000 - 8e8ee3bf L0000a3bf o32 region_0 rva=00001000 vsize=0000a3bf real=dfcd1000 psize=0000b000 f=60000020 for DTD.dll
+8e8ee3bf - 8e8ef000 L00000c41 NUL
+8e8ef000 - 8e90511f L0001611f o32 region_0 rva=00001000 vsize=0001611f real=dfc91000 psize=00017000 f=60000020 for MON.dll
+8e90511f - 8e906000 L00000ee1 NUL
+8e906000 - 8e90adaf L00004daf o32 region_0 rva=00001000 vsize=00004daf real=dfc81000 psize=00005000 f=60000020 for VIO.dll
+8e90adb0 - 8e90aff8 L00000248 o32 region_4 rva=0000a000 vsize=000002d6 real=400ca000 psize=00000248 f=c0002040 for sorting.dll
+8e90aff8 - 8e90b000 L00000008 modname DRF.dll
+8e90b000 - 8e9166cc L0000b6cc o32 region_0 rva=00001000 vsize=0000b6cc real=dfc61000 psize=0000c000 f=60000020 for sdmemory.dll
+8e9166cc - 8e916ad2 L00000406 o32 region_2 rva=0000d000 vsize=000006f8 real=dfc1d000 psize=00000406 f=40002040 for sdhi.dll
+8e916ad4 - 8e916c2a L00000156 o32 region_1 rva=00012000 vsize=0000038c real=dfbe2000 psize=00000156 f=c0002040 for ohci2.dll
+8e916c2c - 8e916df0 L000001c4 o32 region_1 rva=00018000 vsize=000004d8 real=dfbc8000 psize=000001c4 f=c0002040 for ehci.dll
+8e916df0 - 8e916faa L000001ba o32 region_2 rva=00008000 vsize=00000238 real=dfba8000 psize=000001ba f=40002040 for usbmsc.dll
+8e916fac - 8e916ff4 L00000048 o32 struct k.normalize.dll
+8e916ff4 - 8e916fff L0000000b filename ceconfig.h
+8e917000 - 8e92ac1c L00013c1c o32 region_0 rva=00001000 vsize=00013c1c real=dfc41000 psize=00014000 f=60000020 for sdbus.dll
+8e92ac1c - 8e92adfa L000001de o32 region_1 rva=00011000 vsize=00000300 real=dfea1000 psize=000001de f=c8002040 for devmgr.dll
+8e92adfc - 8e92aee8 L000000ec o32 region_1 rva=00004000 vsize=000000ec real=dfe74000 psize=00001000 f=c0300040 for busenum.dll
+8e92aee8 - 8e92af70 L00000088 o32 region_1 rva=00006000 vsize=00000088 real=dfdc6000 psize=00001000 f=c0300040 for mspart.dll
+8e92af70 - 8e92afdc L0000006c e32 struct 4 objs, img=0122 entrypt=00005470 base=8e640000 v7.0 tp0 nk.exe
+8e92afdc - 8e92afe0 L00000004 unknown 09 00 00 00
+8e92afe0 - 8e92afec L0000000c modname regenum.dll
+8e92afec - 8e92aff8 L0000000c modname busenum.dll
+8e92aff8 - 8e92afff L00000007 modname cd.dll
+8e92b000 - 8e92b6dc L000006dc o32 region_0 rva=00001000 vsize=000006dc real=dfc31000 psize=00001000 f=60000020 for SDDmacLib.dll
+8e92b6dc - 8e92bfc9 L000008ed o32 region_3 rva=00016000 vsize=00001228 real=40156000 psize=000008ed f=c0002040 for cereg.dll
+8e92bfcc - 8e92bfd9 L0000000d modname usbdisk6.dll
+8e92bfdc - 8e92bfeb L0000000f modname JITDbgrEXE.exe
+8e92bfec - 8e92bffb L0000000f modname JITDbgrDLL.dll
+8e92bffb - 8e92c000 L00000005 NUL
+8e92c000 - 8e92c058 L00000058 o32 region_2 rva=00003000 vsize=00000058 real=dfc33000 psize=00001000 f=40300040 for SDDmacLib.dll
+8e92c058 - 8e92d000 L00000fa8 NUL
+8e92d000 - 8e9372c2 L0000a2c2 o32 region_0 rva=00001000 vsize=0000a2c2 real=dfc11000 psize=0000b000 f=60000020 for sdhi.dll
+8e9372c2 - 8e938000 L00000d3e NUL
+8e938000 - 8e9387cc L000007cc o32 region_0 rva=00001000 vsize=000007cc real=dfc01000 psize=00001000 f=60000020 for sdhi_isr.dll
+8e9387cc - 8e938f8c L000007c0 o32 region_4 rva=00024000 vsize=00000d22 real=400b4000 psize=000007c0 f=c0002040 for locale.dll
+8e938f8c - 8e938ff8 L0000006c e32 struct 3 objs, img=2122 entrypt=0000789c base=8e661000 v7.0 tp0 kernel.dll
+8e938ff8 - 8e938ffc L00000004 unknown 09 00 00 00
+8e938ffc - 8e939000 L00000004 NUL
+8e939000 - 8e939028 L00000028 o32 region_2 rva=00003000 vsize=00000028 real=dfc03000 psize=00001000 f=40300040 for sdhi_isr.dll
+8e939028 - 8e93a000 L00000fd8 NUL
+8e93a000 - 8e93f056 L00005056 o32 region_0 rva=00001000 vsize=00005056 real=dfbf1000 psize=00006000 f=60000020 for usbd.dll
+8e93f056 - 8e940000 L00000faa NUL
+8e940000 - 8e950ea0 L00010ea0 o32 region_0 rva=00001000 vsize=00010ea0 real=dfbd1000 psize=00011000 f=60000020 for ohci2.dll
+8e950ea0 - 8e950f48 L000000a8 o32 region_1 rva=00007000 vsize=00000100 real=dff37000 psize=000000a8 f=c0002040 for k.sorting.dll
+8e950f48 - 8e950fe8 L000000a0 o32 region_1 rva=00003000 vsize=000000a0 real=dfec3000 psize=00001000 f=c0300040 for romfsd.dll
+8e950fe8 - 8e950ff5 L0000000d modname oalioctl.dll
+8e950ff8 - 8e951000 L00000008 modname LGD.dll
+8e951000 - 8e967670 L00016670 o32 region_0 rva=00001000 vsize=00016670 real=dfbb1000 psize=00017000 f=60000020 for ehci.dll
+8e967670 - 8e968000 L00000990 o32 region_2 rva=00011000 vsize=00019068 real=89f02000 psize=00000990 f=c0000040 for nk.exe
+8e968000 - 8e96d2eb L000052eb o32 region_0 rva=00001000 vsize=000052eb real=dfba1000 psize=00006000 f=60000020 for usbmsc.dll
+8e96d2eb - 8e96e000 L00000d15 NUL
+8e96e000 - 8e9740cc L000060cc o32 region_0 rva=00001000 vsize=000060cc real=dfb91000 psize=00007000 f=60000020 for usbdisk6.dll
+8e9740cc - 8e975000 L00000f34 NUL
+8e975000 - 8e976560 L00001560 o32 region_0 rva=00001000 vsize=00001560 real=00011000 psize=00002000 f=60000020 for JITDbgrEXE.exe
+8e976560 - 8e976814 L000002b4 o32 region_2 rva=000e0000 vsize=00001028 real=000f0000 psize=000002b4 f=c0002040 for LoadingApp.exe
+8e976814 - 8e976d78 L00000564 o32 region_3 rva=000e2000 vsize=000008e0 real=000f2000 psize=00000564 f=40002040 for LoadingApp.exe
+8e976d78 - 8e976df0 L00000078 o32 struct sorting.dll
+8e976df0 - 8e976e5c L0000006c e32 struct 4 objs, img=2122 entrypt=00006b34 base=dff30000 v7.0 tp0 k.sorting.dll
+8e976e5c - 8e976e60 L00000004 unknown 09 00 00 00
+8e976e60 - 8e976ec0 L00000060 o32 struct k.sorting.dll
+8e976ec0 - 8e976f2c L0000006c e32 struct 4 objs, img=2122 entrypt=00004f70 base=400d0000 v7.0 tp0 normalize.dll
+8e976f2c - 8e976f30 L00000004 unknown 09 00 00 00
+8e976f30 - 8e976f90 L00000060 o32 struct normalize.dll
+8e976f90 - 8e976ffc L0000006c e32 struct 3 objs, img=2122 entrypt=00004f70 base=dff20000 v7.0 tp0 k.normalize.dll
+8e976ffc - 8e977000 L00000004 unknown 09 00 00 00
+8e977000 - 8e977048 L00000048 o32 region_2 rva=00004000 vsize=00000048 real=00014000 psize=00001000 f=40300040 for JITDbgrEXE.exe
+8e977048 - 8e978000 L00000fb8 NUL
+8e978000 - 8e97fc44 L00007c44 o32 region_0 rva=00001000 vsize=00007c44 real=dfb51000 psize=00008000 f=60000020 for JITDbgrDLL.dll
+8e97fc44 - 8e97ff5e L0000031a o32 region_1 rva=00063000 vsize=000012e0 real=dffd3000 psize=0000031a f=c8002040 for k.coredll.dll
+8e97ff60 - 8e97ffec L0000008c o32 region_1 rva=00008000 vsize=0000008c real=40138000 psize=00001000 f=c0300040 for DllHeapInfoExt.dll
+8e97ffec - 8e97fff7 L0000000b modname device.dll
+8e97fff8 - 8e980000 L00000008 modname VIO.dll
+8e980000 - 8e98b9de L0000b9de o32 region_0 rva=00001000 vsize=0000b9de real=dfb31000 psize=0000c000 f=60000020 for cd.dll
+8e98b9e0 - 8e98bd5c L0000037c o32 region_2 rva=0000d000 vsize=00000548 real=dfe2d000 psize=0000037c f=40002040 for k.fatutil.dll
+8e98bd5c - 8e98bf52 L000001f6 o32 region_1 rva=0000f000 vsize=00001ae0 real=0001f000 psize=000001f6 f=c0002040 for shell.exe
+8e98bf54 - 8e98bfc0 L0000006c e32 struct 3 objs, img=2122 entrypt=0000481c base=8e650000 v7.0 tp0 kitl.dll
+8e98bfc0 - 8e98bfc4 L00000004 unknown 09 00 00 00
+8e98bfc4 - 8e98bfd2 L0000000e modname relfsdext.dll
+8e98bfd4 - 8e98bfe3 L0000000f modname shellcelog.dll
+8e98bfe4 - 8e98bff1 L0000000d modname toolhelp.dll
+8e98bff4 - 8e98bfff L0000000b modname fsdmgr.dll
+8e98c000 - 8e98f3c3 L000033c3 o32 region_0 rva=00001000 vsize=000033c3 real=dfb21000 psize=00004000 f=60000020 for DVDWrap.dll
+8e98f3c3 - 8e990000 L00000c3d NUL
+8e990000 - 8e995a69 L00005a69 o32 region_0 rva=00001000 vsize=00005a69 real=dfb11000 psize=00006000 f=60000020 for udfs_melco.dll
+8e995a6c - 8e995f04 L00000498 o32 region_1 rva=00030000 vsize=0000a428 real=dff00000 psize=00000498 f=c0002040 for filesys.dll
+8e995f04 - 8e995ff8 L000000f4 o32 region_1 rva=0000d000 vsize=00000940 real=dfcfd000 psize=000000f4 f=c0002040 for DRF.dll
+8e995ff8 - 8e996000 L00000008 NUL
+8e996000 - 8e997916 L00001916 o32 region_0 rva=00001000 vsize=00001916 real=40191000 psize=00002000 f=60000020 for ceusbkwrapper.dll
+8e997918 - 8e997fde L000006c6 o32 region_2 rva=00012000 vsize=00000c28 real=dfea2000 psize=000006c6 f=48002040 for devmgr.dll
+8e997fe0 - 8e997fef L0000000f modname k.toolhelp.dll
+8e997ff0 - 8e997ffb L0000000b modname mspart.dll
+8e997ffb - 8e998000 L00000005 NUL
+8e998000 - 8e9a788d L0000f88d o32 region_0 rva=00001000 vsize=0000f88d real=dfaf1000 psize=00010000 f=60000020 for ceusbkwrapperdrv.dll
+8e9a7890 - 8e9a7f78 L000006e8 o32 region_2 rva=00015000 vsize=00000c10 real=dfe65000 psize=000006e8 f=40002040 for exfat.dll
+8e9a7f78 - 8e9a7fc0 L00000048 o32 struct kitl.dll
+8e9a7fc0 - 8e9a7fd3 L00000013 modname DllHeapInfoExt.dll
+8e9a7fd4 - 8e9a7fde L0000000a modname cereg.dll
+8e9a7fe0 - 8e9a7fec L0000000c modname k.cereg.dll
+8e9a7fec - 8e9a7ff8 L0000000c modname k.ceddk.dll
+8e9a7ff8 - 8e9a8000 L00000008 NUL
+8e9a8000 - 8e9bd4a4 L000154a4 o32 region_0 rva=00001000 vsize=000154a4 real=00011000 psize=00015600 f=60000020 for LoadingApp.exe
+8e9bd4a4 - 8e9bd510 L0000006c e32 struct 3 objs, img=2122 entrypt=00002f6c base=dfba0000 v7.0 tp0 usbmsc.dll
+8e9bd510 - 8e9bd514 L00000004 unknown 09 00 00 00
+8e9bd514 - 8e9bd580 L0000006c e32 struct 3 objs, img=2122 entrypt=00002190 base=dfb90000 v7.0 tp0 usbdisk6.dll
+8e9bd580 - 8e9bd584 L00000004 unknown 09 00 00 00
+8e9bd584 - 8e9bd5cc L00000048 o32 struct usbdisk6.dll
+8e9bd5cc - 8e9bd638 L0000006c e32 struct 3 objs, img=0122 entrypt=00001d3c base=00010000 v7.0 tp0 JITDbgrEXE.exe
+8e9bd638 - 8e9bd63c L00000004 unknown 09 00 00 00
+8e9bd63c - 8e9bd684 L00000048 o32 struct JITDbgrEXE.exe
+8e9bd684 - 8e9bd6f0 L0000006c e32 struct 3 objs, img=2122 entrypt=00004280 base=dfb50000 v7.0 tp0 JITDbgrDLL.dll
+8e9bd6f0 - 8e9bd6f4 L00000004 unknown 09 00 00 00
+8e9bd6f4 - 8e9bd73c L00000048 o32 struct JITDbgrDLL.dll
+8e9bd73c - 8e9bd7a8 L0000006c e32 struct 3 objs, img=2122 entrypt=00006474 base=dfb30000 v7.0 tp0 cd.dll
+8e9bd7a8 - 8e9bd7ac L00000004 unknown 09 00 00 00
+8e9bd7ac - 8e9bd7f4 L00000048 o32 struct cd.dll
+8e9bd7f4 - 8e9bd860 L0000006c e32 struct 3 objs, img=2122 entrypt=00003eb0 base=dfb20000 v7.0 tp0 DVDWrap.dll
+8e9bd860 - 8e9bd864 L00000004 unknown 09 00 00 00
+8e9bd864 - 8e9bd8ac L00000048 o32 struct DVDWrap.dll
+8e9bd8ac - 8e9bd918 L0000006c e32 struct 3 objs, img=2122 entrypt=00003b24 base=dfb10000 v7.0 tp0 udfs_melco.dll
+8e9bd918 - 8e9bd91c L00000004 unknown 09 00 00 00
+8e9bd91c - 8e9bd964 L00000048 o32 struct udfs_melco.dll
+8e9bd964 - 8e9bd9d0 L0000006c e32 struct 3 objs, img=2122 entrypt=000022a0 base=40190000 v7.0 tp0 ceusbkwrapper.dll
+8e9bd9d0 - 8e9bd9d4 L00000004 unknown 09 00 00 00
+8e9bd9d4 - 8e9bda1c L00000048 o32 struct ceusbkwrapper.dll
+8e9bda1c - 8e9bda88 L0000006c e32 struct 3 objs, img=2122 entrypt=000102cc base=dfaf0000 v7.0 tp0 ceusbkwrapperdrv.dll
+8e9bda88 - 8e9bda8c L00000004 unknown 09 00 00 00
+8e9bda8c - 8e9bdad4 L00000048 o32 struct ceusbkwrapperdrv.dll
+8e9bdad4 - 8e9bdb40 L0000006c e32 struct 4 objs, img=0102 entrypt=000162c0 base=00010000 v7.0 tp0 LoadingApp.exe
+8e9bdb40 - 8e9bdb44 L00000004 unknown 09 00 00 00
+8e9bdb44 - 8e9bdba4 L00000060 o32 struct LoadingApp.exe
+8e9bdba4 - 8e9bdf42 L0000039e filedata ceconfig.h
+8e9bdf44 - 8e9bdf54 L00000010 filename SortDefault.nls
+8e9bdf54 - 8e9bdf5e L0000000a filename en-US.nlx
+8e9bdf60 - 8e9bdf6c L0000000c filename autospc.p7b
+8e9bdf6c - 8e9bdf79 L0000000d filename autopriv.p7b
+8e9bdf7c - 8e9bdf88 L0000000c filename ciroots.p7b
+8e9bdf88 - 8e9bdfb8 L00000030 rom_00 copy to ram:  8e967670L000990 -> 89f02000L019068 8e967670L000990 -> 89f02000L019068 8e967670L000990 -> 89f02000L019068
+8e9bdfb8 - 8e9be000 L00000048 NUL
+8e9be000 - 8ea86188 L000c8188 o32 region_1 rva=00017000 vsize=000c8188 real=00027000 psize=000c8200 f=40000040 for LoadingApp.exe
+8ea86188 - 8ea86fbd L00000e35 o32 region_2 rva=0003b000 vsize=00001990 real=dff0b000 psize=00000e35 f=40002040 for filesys.dll
+8ea86fbd - 8ea87000 L00000043 NUL
+8ea87000 - 8ea891d8 L000021d8 o32 region_2 rva=00068000 vsize=000041a8 real=40078000 psize=000021d8 f=48002040 for coredll.dll
+8ea891d8 - 8ea8b310 L00002138 o32 region_2 rva=00065000 vsize=000040e8 real=dffd5000 psize=00002138 f=48002040 for k.coredll.dll
+8ea8b310 - 8eacc07a L00040d6a filedata wince.nls
+8eacc07c - 8eacfc0d L00003b91 filedata default.fdf
+8eacfc10 - 8eae977c L00019b6c filedata rsaenh.dll
+8eae977c - 8eaf4f60 L0000b7e4 filedata normnfc.nls
+8eaf4f60 - 8eafedd6 L00009e76 filedata normnfd.nls
+8eafedd8 - 8eb0f6b8 L000108e0 filedata normnfkc.nls
+8eb0f6b8 - 8eb1e7ce L0000f116 filedata normnfkd.nls
+8eb1e7d0 - 8eb2cf9e L0000e7ce filedata normidna.nls
+8eb2cfa0 - 8eb309e8 L00003a48 filedata scripts.nls
+8eb309e8 - 8ebcc048 L0009b660 filedata SortDefault.nls
+8ebcc048 - 8ebd1acc L00005a84 filedata locale.nls
+8ebd1acc - 8ebd3366 L0000189a filedata ciroots.p7b
+8ebd3368 - 8ebd3368 L00000000 rom_00 end

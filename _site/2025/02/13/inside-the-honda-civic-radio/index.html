@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Inside the Honda Civic Radio | Evan’s Lab</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Inside the Honda Civic Radio" />
+<meta name="author" content="Evan Horsley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A hands-on teardown of the 2014 Honda Civic radio, documenting the internal PCBs, processor, flash memory, RAM, and display hardware while laying the groundwork for deeper reverse engineering of the software and SD card." />
+<meta property="og:description" content="A hands-on teardown of the 2014 Honda Civic radio, documenting the internal PCBs, processor, flash memory, RAM, and display hardware while laying the groundwork for deeper reverse engineering of the software and SD card." />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/2025/02/13/inside-the-honda-civic-radio/" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/2025/02/13/inside-the-honda-civic-radio/" />
+<meta property="og:site_name" content="Evan’s Lab" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-02-13T20:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Inside the Honda Civic Radio" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Evan Horsley"},"dateModified":"2025-02-13T20:00:00-05:00","datePublished":"2025-02-13T20:00:00-05:00","description":"A hands-on teardown of the 2014 Honda Civic radio, documenting the internal PCBs, processor, flash memory, RAM, and display hardware while laying the groundwork for deeper reverse engineering of the software and SD card.","headline":"Inside the Honda Civic Radio","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/blog/2025/02/13/inside-the-honda-civic-radio/"},"url":"http://0.0.0.0:4000/blog/2025/02/13/inside-the-honda-civic-radio/"}</script>
+<!-- End Jekyll SEO tag -->
+<link id="main-stylesheet" rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/blog/feed.xml" title="Evan&apos;s Lab" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/blog/">Evan&#39;s Lab</a>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+  <div class="wrapper">
+    <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Inside the Honda Civic Radio</h1>
+    <div class="post-meta">
+      <time class="dt-published" datetime="2025-02-13T20:00:00-05:00" itemprop="datePublished">
+        February 13, 2025
+      </time>
+
+      
+      
+      
+
+      <span class="bullet-divider">•</span>
+      <span class="reading-time">
+        4 minute read
+      </span>
+    </div>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!-- Content -->
+
+<p>Today I was able to begin the first step in reverse engineering the radio in my 2014 Honda Civic Si. If you missed the original
+post, go ahead and look <a href="https://evanhorsley.com/blog/2025/02/12/new-car-and-reverse-engineering-it/">here</a> for more information.</p>
+
+<p>The first step was a complete teardown to view the inner workings of the radio and see what is powering this thing.
+I was also looking for some sort of serial or debug port, but more on that later. Enough chatter, lets look at the inside of this thing!</p>
+
+<h3 id="the-top-layer-pcb">The top layer PCB</h3>
+<h4 id="top">Top</h4>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%201.jpeg" alt="Top layer of the radio showing various connectors, SD card slot, and fan header" /></p>
+
+<p>The first picture here is the first/top layer of the radio. We can see several things at first glance. In the bottom left, there is a 6 pin wire that
+goes down to the lower board. There are also two ribbon cables that connect the upper and lower boards. At the bottom middle we can see the display
+connector. This connects in when the display is mounted in, similar to how a PCI port “clicks” in but there is no lock. We can also see an
+SD card slot on the left side. In the very middle of the board is an empty connector that the CD drive plugs into via a ribbon cable. The top left
+two pin header is for a fan.</p>
+
+<h4 id="bottom">Bottom</h4>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2019.jpeg" alt="Underside of upper section showing SoC, NAND flash chips, RAM, and audio processing chips" /></p>
+
+<p>This is the underside of the upper section. This is the real brains of the radio here, with a SoC living in the middle of the board. We
+can also see two NAND flash chips, a RAM module, and a couple chips related to audio processing and power handling. Other than that, quite
+boring.</p>
+
+<h3 id="the-bottom-layer-pcb">The bottom layer PCB</h3>
+<h4 id="top-1">Top</h4>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%206.jpeg" alt="Lower section of radio showing audio processing hardware and connectors" /></p>
+
+<p>This is the lower section of the radio. We can again see the 6 pin connector that goes to the upper board, as well as both bottom ribbon cables. There is also quite a bit
+of audio processing hardware here mostly in the top left of the image. There are two main chips we can see, but more on those later. There
+is also an empty ribbon cable connector towards the bottom right in beige that I cannot identity its use. It was unused when I opened it up.</p>
+
+<h4 id="bottom-1">Bottom</h4>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2011.jpeg" alt="Underside of lower section" /></p>
+
+<p>This is the underside of the lower section. Not too much going on here, really.</p>
+
+<h3 id="the-processor">The processor</h3>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2024.jpeg" alt="Renesas R8A77780 processor" /></p>
+
+<p>The processor appears to be a Renesas R8A77780. I unfortunately cannot find much about this online, but from what I can gather, it is a VERY low
+power chip.</p>
+
+<h3 id="the-rom">The ROM</h3>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2026.jpeg" alt="Macronix MX29GL640ELT2I-70G flash memory chip" /></p>
+
+<p>The flash memory appears to be a Macronix MX29GL640ELT2I-70G memory chip. It’s a NOR flash memory device from Macronix’s GL640E family with the following key specifications:</p>
+<ul>
+  <li>64 Megabit (8MB) capacity</li>
+  <li>70ns access time (indicated by the -70 in the part number)</li>
+  <li>Temperature rated for industrial use (indicated by the I in the part number)</li>
+</ul>
+
+<h3 id="the-ram">The RAM</h3>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2028.jpeg" alt="Micron D9PTJ ROM chip" /></p>
+
+<p>The system RAM appears to be made by Micron, model D9PTJ. I can’t find much online about this though, but will keep digging.</p>
+
+<h3 id="the-display">The display</h3>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2029.jpeg" alt="Display assembly with Alps UGKZ2-E06A WiFi/Bluetooth chip" /></p>
+
+<p>The display piece is one assembly with all of the connections for digitizer, screen, and front buttons/lights all connecting to one PCB. That PCB connects,
+like described earlier, directly to the internal PCB with a push in connector that lacks a lock. It just pushes in when the entire unit is assembled. Nothing too crazy
+going on here. It is worth calling out the Alps combo WiFi/Bluetooth chip though, model UGKZ2-E06A. The WiFi aspect is important as it may be an attack vector that
+could be exploited, but not sure.</p>
+
+<h2 id="what-next">What Next</h2>
+<p>Now that we know what makes this thing tick, we may be able to have a better understanding of the software. Unfortunately, I did not see an obvious JTAG, Serial, or other debug interface/port. That doesnt mean that
+there isn’t one, though. My next steps are to research this hardware more, and figure out the exact function (and hopefully contents) of the SD Card. Interestingly, without it, the unit will not boot and displays “Preparing for update”
+on the boot screen, then freezes with error “000006” or something similar. I also want to keep digging around the software, and map the hidden factory menus.</p>
+
+<p>There are a lot more close up photos of the internals in full uncompressed format in a .zip file down below. Feel free to download and take a closer look.</p>
+
+<p>Thanks for reading, and stay tuned for more hopefully soon.</p>
+
+<p>.zip file with full-size pictures: <a href="https://drive.google.com/file/d/1hphRFdYSxYR2MdTMsTRx1IH1QSYL00zD/view?usp=sharing">honda-civic-radio-inside-full.zip</a></p>
+
+  </div>
+
+  <script src="https://giscus.app/client.js"
+            data-repo="evy0311/blog"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMzU0ODYyMjg="
+            data-category="Announcements"
+            data-category-id="DIC_kwDODgk8FM4C0kq9"
+            data-mapping="pathname"
+            data-strict="1"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+        </script>
+
+  <a class="u-url" href="/blog/2025/02/13/inside-the-honda-civic-radio/" hidden></a>
+</article>
+  </div>
+</main><link id="fa-stylesheet" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
+
+<footer class="site-footer h-card">
+  <data class="u-url" value="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <ul class="contact-list">
+          <li class="p-name">Evan Horsley</li>
+          <li><a class="u-email" href="mailto:evan@evanhorsley.com">evan@evanhorsley.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p>Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further.
+</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li>
+        <a rel="me" href="https://github.com/evy0311" target="_blank" title="Github">
+            <span class="grey fa-brands fa-github fa-lg"></span>
+        </a>
+    </li><li>
+        <a rel="me" href="https://evanhorsley.com" target="_blank" title="Website">
+            <span class="grey fa-solid fa-globe fa-lg"></span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="http://0.0.0.0:4000/blog/feed.xml" target="_blank" title="Subscribe to syndication feed">
+            <svg class="svg-icon grey" viewbox="0 0 16 16">
+                <path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194
+          11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0
+          13.806c0-1.21.983-2.195 2.194-2.195zM10.606
+          16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"
+                />
+            </svg>
+        </a>
+    </li>
+</ul></div>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>

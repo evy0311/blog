@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/blog/" rel="alternate" type="text/html" /><updated>2026-01-06T16:51:12-05:00</updated><id>http://0.0.0.0:4000/blog/feed.xml</id><title type="html">Evan’s Lab</title><subtitle>Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further.
+</subtitle><author><name>Evan Horsley</name><email>evan@evanhorsley.com</email></author><entry><title type="html">Further Analysis of the Honda Civic Head Unit Firmware and SD Card (…and the Brick It Became… oops)</title><link href="http://0.0.0.0:4000/blog/2026/01/05/further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/" rel="alternate" type="text/html" title="Further Analysis of the Honda Civic Head Unit Firmware and SD Card (…and the Brick It Became… oops)" /><published>2026-01-05T21:05:42-05:00</published><updated>2026-01-05T21:05:42-05:00</updated><id>http://0.0.0.0:4000/blog/2026/01/05/further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2026/01/05/further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/"><![CDATA[<p>Happy New Year, Honda fans! I rang in the New Year by spending more time going over the Honda Civic head unit. It was very exciting to learn more about this head unit. I’m excited to share my findings below!</p>
+
+<h2 id="rebuilding-nkbin-for-analysis">Rebuilding NK.bin for Analysis</h2>
+
+<p>The next thing I wanted to try was using some of the original Windows CE development tools against the NK.bin I extracted from the SD card. The main tool I had in mind was dumprom.exe, which is designed to take an NK.bin and break it back out into its individual components, mainly EXEs and DLLs.</p>
+
+<p>Unfortunately, dumprom.exe wouldn’t run against the NK.bin I initially extracted using binwalk. After digging into this a bit more, I realized I needed to take a different approach. Instead of working with NK.bin directly, I wrote a small Python script that takes all of the individual .bin chunks that binwalk extracted and merges them back together into a single, flat memory image. The result of that process is a file I called mem_flat.bin.</p>
+
+<p>WinCE NK.bin itself is a record-based format, not a traditional filesystem. Because of that, executable images can be split across multiple records, and simply scanning the raw file for PE\0\0 signatures can miss real modules entirely. Binwalk had already given me a directory full of 8E……..bin chunks under extractions/NK.bin.extracted/0/, each mapped to a specific address. By stitching those chunks back together into a contiguous RAM image, I could then scan it properly for PE headers and strings.</p>
+
+<p>From inside the folder that contains the 8E*.bin files (extractions/NK.bin.extracted/0/), here is the Python script I used to create the flattened memory image.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">python3</span> <span class="o">-</span> <span class="o">&lt;&lt;</span><span class="sh">'</span><span class="s">PY</span><span class="sh">'</span>
+<span class="kn">import</span> <span class="n">os</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">struct</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">os</span><span class="p">.</span><span class="nf">listdir</span><span class="p">(</span><span class="sh">"</span><span class="s">.</span><span class="sh">"</span><span class="p">):</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nf">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="sh">"</span><span class="s">([0-9A-Fa-f]{8})\.bin</span><span class="sh">"</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+<span class="n">addr</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">files</span><span class="p">.</span><span class="nf">append</span><span class="p">((</span><span class="n">addr</span><span class="p">,</span> <span class="n">fn</span><span class="p">))</span>
+
+<span class="n">files</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">chunks:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">files</span><span class="p">))</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
+<span class="k">raise</span> <span class="nc">SystemExit</span><span class="p">(</span><span class="sh">"</span><span class="s">No chunks found.</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">end</span>  <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">getsize</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">files</span><span class="p">)</span>
+<span class="n">size</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">base</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">base:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">hex</span><span class="p">(</span><span class="n">base</span><span class="p">),</span> <span class="sh">"</span><span class="s">end:</span><span class="sh">"</span><span class="p">,</span> <span class="nf">hex</span><span class="p">(</span><span class="n">end</span><span class="p">),</span> <span class="sh">"</span><span class="s">size:</span><span class="sh">"</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+
+<span class="n">mem</span> <span class="o">=</span> <span class="nf">bytearray</span><span class="p">(</span><span class="sa">b</span><span class="sh">"</span><span class="se">\x00</span><span class="sh">"</span> <span class="o">*</span> <span class="n">size</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">addr</span><span class="p">,</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+<span class="n">off</span> <span class="o">=</span> <span class="n">addr</span> <span class="o">-</span> <span class="n">base</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="sh">"</span><span class="s">rb</span><span class="sh">"</span><span class="p">).</span><span class="nf">read</span><span class="p">()</span>
+<span class="n">mem</span><span class="p">[</span><span class="n">off</span><span class="p">:</span><span class="n">off</span><span class="o">+</span><span class="nf">len</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span> <span class="o">=</span> <span class="n">b</span>
+
+<span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">mem_flat.bin</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">wb</span><span class="sh">"</span><span class="p">).</span><span class="nf">write</span><span class="p">(</span><span class="n">mem</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">wrote mem_flat.bin</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># scan for real PE headers in the flattened memory
+</span><span class="n">hits</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">mem</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="sa">b</span><span class="sh">"</span><span class="s">MZ</span><span class="sh">"</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+<span class="k">break</span>
+<span class="k">if</span> <span class="n">j</span> <span class="o">+</span> <span class="mh">0x40</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">mem</span><span class="p">):</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="nf">unpack_from</span><span class="p">(</span><span class="sh">"</span><span class="s">&lt;I</span><span class="sh">"</span><span class="p">,</span> <span class="n">mem</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mh">0x3C</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pe</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="n">e</span>
+<span class="k">if</span> <span class="n">pe</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">mem</span><span class="p">)</span> <span class="ow">and</span> <span class="n">mem</span><span class="p">[</span><span class="n">pe</span><span class="p">:</span><span class="n">pe</span><span class="o">+</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="sh">"</span><span class="s">PE</span><span class="se">\x00\x00</span><span class="sh">"</span><span class="p">:</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">PE at</span><span class="sh">"</span><span class="p">,</span> <span class="nf">hex</span><span class="p">(</span><span class="n">base</span> <span class="o">+</span> <span class="n">j</span><span class="p">),</span> <span class="sh">"</span><span class="s">file offset</span><span class="sh">"</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<span class="n">hits</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">2</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">PE hits:</span><span class="sh">"</span><span class="p">,</span> <span class="n">hits</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="further-explanation-on-why-dumpromexe-failed-on-the-original-nkbin">Further Explanation on Why dumprom.exe Failed on the Original NK.bin</h3>
+
+<p>One thing worth explicitly calling out here is why dumprom.exe failed when pointed directly at the NK.bin extracted from the SD card, but worked once I rebuilt a flattened memory image. NK.bin is not a traditional PE container or filesystem; it is a record‑based format designed to be mapped into memory by the bootloader. Because of that, executable images can be split across multiple records at different addresses. dumprom.exe expects something much closer to an in‑memory view of NK.bin, not the raw record format, which explains why it initially failed and then worked once everything was stitched back together.</p>
+
+<h3 id="results-from-dumpromexe-and-eimgsfsexe">Results from dumprom.exe and eimgsfs.exe</h3>
+
+<p>After doing that, I ran mem_flat.bin through both <a href="https://itsme.home.xs4all.nl/projects/xda/dumprom.html">dumprom.exe</a> and <a href="https://github.com/nlitsme/eimgfs">eimgsfs.exe</a> and it worked! You can see the results of each in the text files below:</p>
+<details data-fetch="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/dumprom_results.txt">
+<summary><strong>dumprom.exe output (flattened NK.bin)</strong></summary>
+<p>
+    <a href="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/dumprom_results.txt" download="">
+      Download dumprom_results.txt
+    </a>
+  </p>
+
+<pre><code class="language-text">Loading…</code></pre>
+</details>
+
+<details data-fetch="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/eimgfs_results.txt">
+<summary><strong>eimgsfs.exe output (flattened NK.bin)</strong></summary>
+<p>
+    <a href="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/eimgfs_results.txt" download="">
+      Download eimgfs_results.txt
+    </a>
+  </p>
+
+<pre><code class="language-text">Loading…</code></pre>
+</details>
+
+<p>The findings from that are very valuable. We can see a few .exe files and a ton of .dll files, as well as some others. See the link at the end of this post for more information on the files found.</p>
+
+<h2 id="bitmap-assets-on-the-sd-card">Bitmap Assets on the SD Card</h2>
+
+<p>There are several bitmap files on the SD card. They all seem to be related to the pre-OS stuff like updater and thermal warnings. Interestingly, the update-related ones each have two versions: one that lists USB as the update method, and one that lists CD as the update method. For example, “Copying… Please do not turn off the vehicle or disconnect the USB device.” vs “Copying… Please do not turn off the vehicle or eject the disc.” This means both USB and CD drive can be used for updates.</p>
+
+<p>I was searching the contents of the card to try and find out how the text is displayed. My initial theory is that it utilized bitmaps or other images representing each character. I was unable to find anything like this on the SD card; however, during my search, I did discover a very interesting image.</p>
+
+<p>This code:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">python3</span> <span class="o">-</span> <span class="o">&lt;&lt;</span><span class="sh">'</span><span class="s">PY</span><span class="sh">'</span>
+<span class="kn">import</span> <span class="n">os</span><span class="p">,</span> <span class="n">struct</span>
+
+<span class="n">IMG</span><span class="o">=</span><span class="sh">"</span><span class="s">civic_dump_raw.img</span><span class="sh">"</span>
+<span class="n">OUT</span><span class="o">=</span><span class="sh">"</span><span class="s">all_bmps_from_img</span><span class="sh">"</span>
+<span class="n">os</span><span class="p">.</span><span class="nf">makedirs</span><span class="p">(</span><span class="n">OUT</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="n">IMG</span><span class="p">,</span><span class="sh">"</span><span class="s">rb</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">read</span><span class="p">()</span>
+
+<span class="n">n</span><span class="o">=</span><span class="nf">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1"># size filters
+# fonts are often tens or hundreds of KB, not tiny icons
+</span><span class="n">MIN_SZ</span><span class="o">=</span><span class="mi">20_000</span>
+<span class="n">MAX_SZ</span><span class="o">=</span><span class="mi">2_500_000</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="sa">b</span><span class="sh">"</span><span class="s">BM</span><span class="sh">"</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+<span class="k">break</span>
+<span class="k">if</span> <span class="n">j</span><span class="o">+</span><span class="mi">6</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+<span class="n">sz</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="nf">unpack_from</span><span class="p">(</span><span class="sh">"</span><span class="s">&lt;I</span><span class="sh">"</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">if</span> <span class="n">MIN_SZ</span> <span class="o">&lt;=</span> <span class="n">sz</span> <span class="o">&lt;=</span> <span class="n">MAX_SZ</span> <span class="ow">and</span> <span class="n">j</span><span class="o">+</span><span class="n">sz</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+<span class="c1"># quick validity check: DIB header size usually 40, 108, 124
+</span><span class="n">dib</span> <span class="o">=</span> <span class="n">struct</span><span class="p">.</span><span class="nf">unpack_from</span><span class="p">(</span><span class="sh">"</span><span class="s">&lt;I</span><span class="sh">"</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">14</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">j</span><span class="o">+</span><span class="mi">18</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">dib</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">124</span><span class="p">):</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">bmp_</span><span class="si">{</span><span class="n">count</span><span class="si">:</span><span class="mi">05</span><span class="n">d</span><span class="si">}</span><span class="s">_</span><span class="si">{</span><span class="n">j</span><span class="si">:</span><span class="mi">08</span><span class="n">X</span><span class="si">}</span><span class="s">_</span><span class="si">{</span><span class="n">sz</span><span class="si">}</span><span class="s">.bmp</span><span class="sh">"</span>
+<span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">OUT</span><span class="p">,</span> <span class="n">fn</span><span class="p">),</span><span class="sh">"</span><span class="s">wb</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">o</span><span class="p">:</span>
+<span class="n">o</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">j</span><span class="p">:</span><span class="n">j</span><span class="o">+</span><span class="n">sz</span><span class="p">])</span>
+<span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">2</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Extracted BMPs:</span><span class="sh">"</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+<span class="n">PY</span>
+</code></pre></div></div>
+<p>extracted a single image that I still can’t wrap my head around. As you can see below, it is almost the same resolution as the head unit, and contains text relating to a Honda dealer called “Germain Honda”. This is the dealer where I suspect the car was purchased from when new. This image was likely either displayed after first purchase, or I think it may be displayed after the vehicle is serviced by a dealer.
+<img src="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/bmp_00000_33010000_1080054.bmp" alt="Germain Honda possible radio splash screen" /></p>
+
+<h3 id="dealer-splash-image-as-a-provisioning-artifact">Dealer Splash Image as a Provisioning Artifact</h3>
+
+<p>The presence of a full‑resolution, dealer‑branded splash image embedded directly in the SD card image is especially interesting. Given its resolution and content, this does not appear to be a generic UI asset. While I can’t find any public documentation on this, the most reasonable explanation based on what I’m seeing is that this image was written to the card during dealer provisioning, initial delivery, or a service event, and then displayed once during boot. I haven’t been able to find any references to this behavior online, but the artifact itself is very real.</p>
+
+<h2 id="testing-the-role-of-nkbin-on-the-sd-card">Testing the Role of NK.bin on the SD Card</h2>
+
+<p>After further dissection of the SD card contents, I wanted to know if we could swap an NK.bin file onto the SD card and see if it might boot that or behave differently. I extracted the NK.bin from the SWUpdate.mef (from the CR-V CarPlay update) file, and then swapped that into the SD card image. The head unit booted fine and no behavior changed.</p>
+
+<p>I also purposely corrupted the NK.bin gzipped portion altogether to see how it might behave, and it still booted fine. So the SD card is likely just asset/map data (images etc.), config, and some app data. More than likely the actual runtime stack is stored internally on the radio itself. Bummer!</p>
+
+<p>This, along with the general contents of NK.bin, leads me to believe that the SD card is in fact not the actual OS the radio runs, but rather all image assets, map data (if equipped), config, and some files relating to the radio boot and update process. This makes our goal of reverse engineering a little bit harder. However, this does mean that one can freely change the image assets on the card if they want to adjust the look of the radio, but this would be very involved.</p>
+
+<h2 id="sd-card-layout-and-architecture">SD Card Layout and Architecture</h2>
+
+<p>This means the architecture of the SD card contents is essentially as follows:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Layout:
+Sector 0            : MBR (mostly empty)
+Sectors 1–31        : padding / reserved
+Sectors 32–557055   : FAT16 partition (empty by design)
+Sectors 557056+     : Raw Honda data region
+├─ NK.bin.gz
+├─ UI resource packs
+├─ image blobs
+├─ config tables
+└─ crypto / update logic
+</code></pre></div></div>
+
+<p>This makes me believe that the actual OS files (text, exe that runs the radio, etc.) all live on the internal flash. This is a bit annoying, as this makes the process of changing those a bit harder. This is further confirmed by the contents of the dumped log files from the hidden menu within the radio. Inside of the hidden factory diagnostics menu, there is a way to dump and output log files from the radio. Inside of these logs, there are references to executables like HMIMANAGER.EXE, AV.EXE, PLAYER.EXE, MISC.EXE, TUNER.EXE, DIAG.EXE, MIRRORLINK.EXE and COMMUNICATION.EXE. None of these are present on the SD card itself, which means they likely live in internal flash. You can take a closer look at the dumped log output files at the end of this post.</p>
+
+<h3 id="why-the-fat16-partition-is-empty">Why the FAT16 Partition Is Empty</h3>
+
+<p>One thing that stood out to me early on was that the FAT16 partition on the SD card is essentially empty by design, while all of the interesting data lives in the raw region after it. Based on how the card is laid out and how the radio behaves, this FAT partition appears to exist mainly for compatibility or tooling reasons rather than actual runtime use. All meaningful assets, configuration, and update‑related data appear to live outside of it in Honda’s own layout.</p>
+
+<h2 id="evidence-of-internal-flash-storage">Evidence of Internal Flash Storage</h2>
+
+<p>Another interesting find within the log files is mention of cold boot logic. I suspected the radio was already doing something like this but these files confirm it. Essentially, there is a snapshot of the last known good boot arguments, configuration, etc. stored as a compressed file likely on flash. Then, when the radio cold boots, it utilizes this to ensure it boots quickly. See the beginning of the SER_MSG.LOG file here:</p>
+
+<h2 id="cold-boot-and-snapshot-behavior">Cold Boot and Snapshot Behavior</h2>
+
+<pre><code class="language-txt">Startup Loader : H14M DA US 3.28 **/
+/********/
+CE 700
+[0x0][0xFFFFFFFF][0x0][0xFFFFFFFF]
+&lt;&lt;&lt; Cold Boot &gt;&gt;&gt;
+SnapShotBoot
+cur backup
+17FFFFF0 : 02080181 58001228 00011228 2320687D ....(..X(...}h #
+backup sum 0x00011228, calced 0x4F37853E -&gt; NG
+</code></pre>
+
+<h2 id="attempting-a-modified-update-and-bricking-the-unit">Attempting a Modified Update (and Bricking the Unit)</h2>
+
+<p>I then decided to try one more time to modify the CR-V Carplay update file to see if I could just get it to do something, anything! At this point I have been largely unable to have anything of value to show, so I was eager to get something to work. As far as I can tell, these updates are cryptographically signed, so the chance of it working is essentially zero, but I was riding on the <a href="https://global.honda/en/thepowerofdreams/">power of dreams</a> here! Ha!</p>
+
+<p>I forced the update via the hidden menu in the radio screen, and as expected the radio rebooted. It showed “Preparing for program update…” as it has for me before when messing with this process, then showed “00000006”. Oh well, so it didn’t work. I power cycled the radio after removing the USB and, oops! The same message is back. I power cycled a few more times, and it’s still there! I even let it sit for hours unplugged. No dice. I then tried the handful of different backup SD cards I made in case I corrupted the main one, no luck either. So at this point, I think I have soft-bricked the head unit. Major fail! I guess this is a good way to convince my wife to let me buy a hot air rework station and an Xgecu T48, ha! More than likely what needs to happen is the onboard flash and possibly EEPROM both need to come off and be flashed to tell the unit to not expect an update. The unit appears to be stuck in a state where it is expecting an update on boot and does not proceed until it has one.</p>
+
+<h3 id="the-likely-cause-of-the-bricked-state">The Likely Cause of the Bricked State</h3>
+
+<p>Based on the behavior I’m seeing, it seems very likely that the unit is stuck in a state where a persistent flag has been set telling the bootloader to expect a program update. When the update process fails or cannot find valid media, the unit never exits that state and simply hangs on boot. I don’t yet have direct confirmation of where this flag lives, but given everything else observed so far, internal flash and possibly EEPROM are the most likely candidates. This is something I plan to investigate further.</p>
+
+<p><img src="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/Honda%20DA%20soft%20brick%201.jpeg" alt="Preparing for program update screen on soft bricked radio" /></p>
+
+<p><img src="/assets/posts/2026-01-05-further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/Honda%20DA%20soft%20brick%202.jpeg" alt="00000006 error code screen on soft bricked radio" /></p>
+
+<h2 id="educational-research-notice">Educational Research Notice</h2>
+
+<p>The following materials are provided solely for the purpose of technical analysis, reverse-engineering research, and interoperability study.</p>
+
+<p>The data was obtained from hardware lawfully owned by the author. No warranties are made, and the materials are provided as-is for examination and research only.</p>
+
+<p>These materials are not intended to enable infringement, commercial use, or unauthorized distribution of proprietary software. If you do not have the legal right to access similar data, do not download or use these files.</p>
+
+<p><a href="https://drive.google.com/file/d/1ahyFj69Uwq9jwMsII9SmOX4kg8mCuhVt/view?usp=drive_link">Dumped radio log files (factory diagnostics output)</a></p>
+
+<p><a href="https://drive.google.com/file/d/1y86QGkp_GmyP0S5x-U3_FUoIYMqg4QwO/view?usp=drive_link">Dumped SD card image and dumprom results</a></p>
+
+<script>
+// Script to dynamically load content blocks from result txt files
+document.querySelectorAll('details[data-fetch]').forEach((d) => {
+  d.addEventListener('toggle', async () => {
+    if (!d.open) return;
+    if (d.dataset.loaded === '1') return;
+
+    const url = d.getAttribute('data-fetch');
+    const code = d.querySelector('code');
+
+    try {
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
+      code.textContent = text; // textContent prevents HTML injection
+      d.dataset.loaded = '1';
+    } catch (e) {
+      code.textContent = `Failed to load: ${url}\n${e}`;
+      d.dataset.loaded = '1';
+    }
+  });
+});
+</script>]]></content><author><name>Evan Horsley</name><email>evan@evanhorsley.com</email></author><category term="reverse-engineering" /><category term="automotive" /><category term="embedded-systems" /><category term="honda" /><category term="honda-civic" /><category term="head-unit" /><category term="infotainment" /><category term="windows-ce" /><category term="firmware" /><category term="sd-card" /><category term="nk-bin" /><category term="reverse-engineering" /><category term="automotive-hacking" /><category term="embedded" /><category term="bootloader" /><category term="update-process" /><category term="bricked-device" /><summary type="html"><![CDATA[I dove deep into the Honda Civic head unit firmware and SD card to better understand how its Windows CE–based system is structured, how NK.bin really works, and where the actual OS lives. Along the way, I rebuilt flattened memory images, extracted hidden assets, uncovered dealer provisioning artifacts, and ultimately soft-bricked the unit while experimenting with the update process. This post documents the findings, the tooling, and the lessons learned from reverse-engineering a modern automotive infotainment system.]]></summary></entry><entry><title type="html">More Honda Civic headunit reverse engineering</title><link href="http://0.0.0.0:4000/blog/2025/12/31/more-honda-civic-headunit-reverse-engineering/" rel="alternate" type="text/html" title="More Honda Civic headunit reverse engineering" /><published>2025-12-31T08:00:00-05:00</published><updated>2025-12-31T08:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/2025/12/31/more-honda-civic-headunit-reverse-engineering</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/12/31/more-honda-civic-headunit-reverse-engineering/"><![CDATA[<!-- Content -->
+
+<p>I have been slowly working through how to make custom modifications to the factory headunit in my 2014 Honda Civic Si. As many of you probably remember, these cars were advertised around 2014 and 2015 as candidates for future software updates from Honda. Those updates were supposed to add features like Apple CarPlay and Android Auto. Honda ultimately abandoned that plan, and those updates never came.</p>
+
+<p>The end result is that owners of the Civic, CR-V, HR-V, and Fit across several model years were left with a great-looking 7 inch display that is, for all practical purposes, a “dumb” screen. A few years ago, a beta firmware leaked that included Apple CarPlay, but it only worked on the CR-V without navigation. That still left most owners completely out of luck.</p>
+
+<p>Going into this project, I honestly did not know how locked down this system really was. Everything was theoretical at first. I spent a lot of time researching this specific headunit and kept coming up short. No one seemed to have gone very deep into it. That is when I stepped back and looked at the bigger picture.</p>
+
+<p>The first key question was who actually manufactures this headunit. It turns out they are built by Mitsubishi Electric Co., often referred to as Melco. With that information, I started looking at other Melco-built automotive headunits. Sure enough, there are several very similar “cousin” units, including the MMCS and NR-xxx series, which even share a similar model number scheme to the Honda units. These systems are known to run Windows CE, and there is a decent amount of documentation online about modifying them, including things like changing splash screens and gaining limited system access.</p>
+
+<h3 id="attacking-the-sd-card">Attacking the SD card</h3>
+
+<p>My first potential attack vector was the SD card. On many MMCS systems, users were able to gain access through removable media, although often via CDs or internal hard drives. If I could understand how the Honda SD card worked, there was a chance I could take advantage of that.</p>
+
+<p>Plugging the SD card into a normal computer yielded no mounted volume. That tells us a few things. Either the card is protected with an SD password, it uses a non-standard partition layout, or both. The easiest first step was to determine whether an SD-level password was being used.</p>
+
+<p>To do this, I used a logic analyzer (LA2016) along with a dedicated SD sniffer board from SparkFun. The setup allowed me to electrically sit between the headunit and the SD card and observe all traffic on the SD bus during boot. Using sigrok and PulseView, I captured the full initialization sequence as the headunit powered on.</p>
+
+<p>Very quickly, something interesting showed up. During the early SD command sequence, the headunit issues a CMD42 command, which is the SD protocol command used for locking and unlocking a card. In other words, there is absolutely a password involved. Continuing to monitor the traffic showed the card being successfully unlocked, mounted, and then read from as the system booted.</p>
+
+<h3 id="unlocking-the-card-for-real">Unlocking the card for real</h3>
+
+<p>Knowing the password exists is only half the battle. Normal PC SD card readers cannot unlock a card protected this way. The SD password mechanism operates at the SD protocol level, before any filesystem is exposed, and consumer hardware simply does not give you access to that layer.</p>
+
+<p>To work around this, I used a Teensy 4.1 wired directly to the SD card signals via the sniffer board. In this setup, the Teensy acts as a very simple SD host controller. I wrote a small program in the Arduino environment that speaks raw SD commands over GPIO. This allowed me to send CMD42 manually, provide the password, and then issue additional commands to read card metadata and raw sectors.</p>
+
+<p>At first, the password I extracted did not work. That sent me back to the capture data. I then came across an excellent blog post describing a similar reverse engineering process on a VW navigation system. The author explained that SD command bit alignment can be misleading when viewed in a logic analyzer, and that the password bytes may be shifted relative to byte boundaries.</p>
+
+<p>With that in mind, I adjusted the bit window I was using to interpret the password data. After realigning the bits and retrying the unlock command, it worked immediately.</p>
+
+<h3 id="the-sd-card-password">The SD card password</h3>
+
+<p>Here is the 16 byte SD password used by this headunit, formatted as hexadecimal bytes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>95 D5 9D E5
+86 FD BD 85
+8D DD F6 76
+5D 96 FE FF
+</code></pre></div></div>
+
+<p>Once the card was unlocked, I was able to read the card ID (CID) and perform a full, bit-for-bit dump of the entire SD card.</p>
+
+<h3 id="what-is-on-the-card">What is on the card</h3>
+
+<p>This was a huge breakthrough. The SD card contains all of the UI image assets as well as the Windows CE operating system files themselves. In other words, the headunit appears to boot directly from the SD card.</p>
+
+<p>That immediately raised two important questions.</p>
+
+<p>The first question was whether the headunit validates the SD card’s CID during boot. If it did, that would prevent using cloned or replacement cards. To test this, I wrote the full image to a completely different SD card and inserted it into the headunit. It booted without any issues. This confirms that the system does not verify the card ID, only the contents.</p>
+
+<p>The second question was whether I could modify individual files on the card and have those changes show up on the headunit.</p>
+
+<h3 id="modifying-the-splash-screen">Modifying the splash screen</h3>
+
+<p>The first experiment was the splash screen. After manually searching through thousands of image files, I found the splash screen that matched my specific car. I replaced it with a custom image, making sure the file size, format, and encoding remained identical to avoid triggering any integrity checks.</p>
+
+<p>When I inserted the card and powered on the headunit, I initially saw the original splash screen. That was disappointing, but only for a moment. After a few seconds, my custom image appeared.</p>
+
+<p>This suggests there is a fallback splash screen stored somewhere in the headunit’s internal storage that is shown early in the boot process, followed by the SD card version once the system is fully up. More importantly, it strongly suggests that at least some files on the SD card are not protected by cryptographic signatures or checksums.</p>
+
+<h3 id="reusing-the-password-on-other-headunits">Reusing the password on other headunits</h3>
+
+<p>The next experiment was to see whether this SD card password was unique to my specific headunit, or if Honda and Melco reused the same password across multiple vehicles. This distinction matters a lot. If the password were unique per unit, reproducing this work would require extracting a new password from each headunit. If it were shared, then anyone could unlock their card using the same basic hardware setup.</p>
+
+<p>To test this, I purchased an SD card from a 2016 CR-V with navigation and attempted to unlock it using the same CMD42 password. It worked immediately.</p>
+
+<p>This strongly suggests that the SD password is reused across at least multiple Honda headunits and model years. Practically speaking, that means others should be able to reproduce this process at home using a Teensy (or similar microcontroller) and an SD breakout or sniffer board, without needing access to the original vehicle the card came from.</p>
+
+<h3 id="where-this-goes-next">Where this goes next</h3>
+
+<p>That is where I will stop for now. The fact that the unit boots from an easily clonable SD card, does not verify the card ID, and accepts modified image assets opens up a lot of possibilities.</p>
+
+<p>In a future post, I plan to document the hardware setup, the Teensy code, and the tooling in much more detail. I also plan to continue digging into the Windows CE environment itself.</p>
+
+<p>The goal of this post was to share progress and hopefully get others in the community excited about what might be possible.</p>
+
+<p>Edit: Here is the Github link with the SD card tools used to unlock and dump the card: <a href="https://github.com/evy0311/honda-sd-card-tools">Honda SD Card Tools</a></p>
+
+<hr />
+
+<h2 id="images">Images</h2>
+
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-12-31-more-honda-civic-headunit-reverse-engineering/pulseview.png" alt="CarPlay Sneak Peak" /></p>
+
+<h2 id="video">Video</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/aiE3k4v_0Ao" title="Honda headunit reverse engineering" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+  </iframe>
+</div>]]></content><author><name>Evan Horsley</name><email>evan@evanhorsley.com</email></author><category term="reverse-engineering" /><category term="automotive" /><category term="embedded-systems" /><summary type="html"><![CDATA[A deep dive into reverse-engineering a Honda Civic head unit: unlocking the SD card, extracting Windows CE assets, modifying the splash screen, and uncovering how these systems really boot.]]></summary></entry><entry><title type="html">Attempting to get CarPlay on the stock headunit</title><link href="http://0.0.0.0:4000/blog/2025/10/04/attempting-to-get-carplay-on-the-stock-headunit/" rel="alternate" type="text/html" title="Attempting to get CarPlay on the stock headunit" /><published>2025-10-04T13:00:00-04:00</published><updated>2025-10-04T13:00:00-04:00</updated><id>http://0.0.0.0:4000/blog/2025/10/04/attempting-to-get-carplay-on-the-stock-headunit</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/10/04/attempting-to-get-carplay-on-the-stock-headunit/"><![CDATA[<!-- Content -->
+
+<p>Well, for almost a year I had the Joying android headunit (Option 3 mentioned in my post <a href="https://evanhorsley.com/blog/2025/02/12/new-car-and-reverse-engineering-it/">here</a>) in my 2014 Honda Civic Si. This was one of the
+options I had mentioned in my original post a bit back. It was great, but I really missed the look of the stock
+Honda headunit.  Something about it is just “better” and it looks great. The carbon fiber trim, the sleek black radio screen,
+and the genuine Honda interface all just looked too good. I decided to switch back to the stock one, purely to give it a try.</p>
+
+<p>The Joying unit is overall good. The wireless CarPlay worked great and I had 0 issues with that. My only complaint is the audio
+quality. Its not the best, but not terrible either. But the stock headunit produces noticeably better audio, in my opinion. This was another reason why I switched back.</p>
+
+<h3 id="the-new-experiment">The new experiment</h3>
+
+<p>After swapping back to stock, I had a goal: how can I get CarPlay on the stock Honda headunit? The system as we know runs
+Windows CE, but getting into that interface has so far proven to be difficult, and even if we could, development for Windows CE is hard,
+mostly given its age and deprecation. That leaves us with one main route: Utilizing the HDMI input.</p>
+
+<p>My thinking is this: The car has an HDMI input, so why can’t I just run a Raspberry Pi in the car that outputs CarPlay (or anything else I want, really) to
+the car headunit? This is the least intrusive option, because then all the existing car function like backup camera, lanewatch, and audio control
+remains untouched, and those things will still override when needed.</p>
+
+<h3 id="the-problem-with-this">The problem with this</h3>
+
+<p>Well, there are a few. First off, the HDMI input can’t be used when driving. This should be easy to solve, because the headunit has an input wire on the back
+that connects to the parking brake signal. If this input is grounded, the headunit will think the parking brake is on, and then the HDMI will work while driving. This can 
+be achieved by either splicing into that wire and grounding it, or doing what I plan to do, and making a harness to sit in between the headunit and existing
+plug to “intercept” this signal and ground it myself. Easy enough.</p>
+
+<p>The second problem? How to control the Raspberry Pi when it’s in the car. Since HDMI doesnt transmit touch data, we need a way to either get the touch data from the car
+back to the Raspberry Pi, or an alternative method. Of course, touch screen is preferred, but also the most difficult. The easiest option is to wire in a rotary encode with push button
+to the Pi, then that can be used to control CarPlay (similar to how some BMW and Mazda cars do). The rotary encoder option will be the first path I take, to get this going for the time being. 
+However, I have a plan to get the touch data out of the stock unit and into the Pi.</p>
+
+<p>Stepping back, the original purpose of the HDMI input was much less about plugging in devices like a PlayStation or Apple TV. It had everything to do with Honda’s early attempt at a phone driven
+infotainment system, pre-CarPlay and Android Auto. The idea was an iPhone could be plugged into the HDMI and USB ports on the car, and also connected via Bluetooth. Then, you would load the Honda
+specific apps onto the phone, and then when open those apps could project things onto the car screen, even while in motion. For example, Honda had a navigation app that would display a GPS-like
+interface on the car radio, and you could even interact with it via the touchscreen.</p>
+
+<p>How this all worked together, I’ve no 100% understanding, yet. But my initial thoughts have been that the HDMI served the video, and possibly audio from the phone. Then, the USB was used to keep the phone charged,
+and possibly served the touch screen data to the phone (since user’s could interact with the Honda radio touchscreen and control the GPS apps running on the phone). The Bluetooth likely served for calls and to allow
+steering wheel controls.</p>
+
+<p>I’ve done initial attempts to mimic this interface with no luck, yet. I think the car expects a very specific sequence of setup and commands from the phone over USB, of which I’m not sure what they are. The apps
+are no longer available for download, and Honda has long discontinued them everywhere. If anyone has an old iPhone lying around with these apps, let me know, and I will buy it off of you. Ha.</p>
+
+<p>As for audio, I was initially hoping that the car would allow me to have the HDMI plugged in for video, but audio going over Bluetooth from the Pi. This would’ve made it much easier to relay the steering wheel controls
+to the Pi and then to CarPlay, but the headunit views these as two separate inputs, so it wasn’t possible from what I can tell. Audio over HDMI works fine, but of course, no phone button controls.</p>
+
+<h3 id="what-works-so-far">What works so far</h3>
+
+<p>So far, I’ve gotten the Raspberry Pi displaying the CarPlay interface to the screen, and audio works great. I had to adjust the headunit’s color settings for the HDMI input as it looked a bit washed out, 
+but other than that I think it turned out pretty great! Now that this works and looks good, it’s time to solve for all of the other problems. Those will be the hardest part. but I’ve gotten a pretty good understanding of this
+system so far and will continue to work on this.</p>
+
+<p>For those wondering, CarPlay is running on the Raspberry Pi with software found <a href="https://github.com/rhysmorgan134/react-carplay">here</a>.</p>
+
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-10-04-attempting-to-get-carplay-on-the-stock-headunit/sneak-peak.jpeg" alt="CarPlay Sneak Peak" /></p>]]></content><author><name>Evan Horsley</name><email>evan@evanhorsley.com</email></author><category term="reverse-engineering" /><category term="automotive" /><category term="embedded-systems" /><summary type="html"><![CDATA[An experiment to bring CarPlay to a stock Honda head unit using its hidden HDMI input—leveraging a Raspberry Pi, reverse-engineering Honda’s phone projection system, and exploring touch, audio, and control limitations along the way.]]></summary></entry><entry><title type="html">Inside the Honda Civic Radio</title><link href="http://0.0.0.0:4000/blog/2025/02/13/inside-the-honda-civic-radio/" rel="alternate" type="text/html" title="Inside the Honda Civic Radio" /><published>2025-02-13T20:00:00-05:00</published><updated>2025-02-13T20:00:00-05:00</updated><id>http://0.0.0.0:4000/blog/2025/02/13/inside-the-honda-civic-radio</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/02/13/inside-the-honda-civic-radio/"><![CDATA[<!-- Content -->
+
+<p>Today I was able to begin the first step in reverse engineering the radio in my 2014 Honda Civic Si. If you missed the original
+post, go ahead and look <a href="https://evanhorsley.com/blog/2025/02/12/new-car-and-reverse-engineering-it/">here</a> for more information.</p>
+
+<p>The first step was a complete teardown to view the inner workings of the radio and see what is powering this thing.
+I was also looking for some sort of serial or debug port, but more on that later. Enough chatter, lets look at the inside of this thing!</p>
+
+<h3 id="the-top-layer-pcb">The top layer PCB</h3>
+<h4 id="top">Top</h4>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%201.jpeg" alt="Top layer of the radio showing various connectors, SD card slot, and fan header" /></p>
+
+<p>The first picture here is the first/top layer of the radio. We can see several things at first glance. In the bottom left, there is a 6 pin wire that
+goes down to the lower board. There are also two ribbon cables that connect the upper and lower boards. At the bottom middle we can see the display
+connector. This connects in when the display is mounted in, similar to how a PCI port “clicks” in but there is no lock. We can also see an
+SD card slot on the left side. In the very middle of the board is an empty connector that the CD drive plugs into via a ribbon cable. The top left
+two pin header is for a fan.</p>
+
+<h4 id="bottom">Bottom</h4>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2019.jpeg" alt="Underside of upper section showing SoC, NAND flash chips, RAM, and audio processing chips" /></p>
+
+<p>This is the underside of the upper section. This is the real brains of the radio here, with a SoC living in the middle of the board. We
+can also see two NAND flash chips, a RAM module, and a couple chips related to audio processing and power handling. Other than that, quite
+boring.</p>
+
+<h3 id="the-bottom-layer-pcb">The bottom layer PCB</h3>
+<h4 id="top-1">Top</h4>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%206.jpeg" alt="Lower section of radio showing audio processing hardware and connectors" /></p>
+
+<p>This is the lower section of the radio. We can again see the 6 pin connector that goes to the upper board, as well as both bottom ribbon cables. There is also quite a bit
+of audio processing hardware here mostly in the top left of the image. There are two main chips we can see, but more on those later. There
+is also an empty ribbon cable connector towards the bottom right in beige that I cannot identity its use. It was unused when I opened it up.</p>
+
+<h4 id="bottom-1">Bottom</h4>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2011.jpeg" alt="Underside of lower section" /></p>
+
+<p>This is the underside of the lower section. Not too much going on here, really.</p>
+
+<h3 id="the-processor">The processor</h3>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2024.jpeg" alt="Renesas R8A77780 processor" /></p>
+
+<p>The processor appears to be a Renesas R8A77780. I unfortunately cannot find much about this online, but from what I can gather, it is a VERY low
+power chip.</p>
+
+<h3 id="the-rom">The ROM</h3>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2026.jpeg" alt="Macronix MX29GL640ELT2I-70G flash memory chip" /></p>
+
+<p>The flash memory appears to be a Macronix MX29GL640ELT2I-70G memory chip. It’s a NOR flash memory device from Macronix’s GL640E family with the following key specifications:</p>
+<ul>
+  <li>64 Megabit (8MB) capacity</li>
+  <li>70ns access time (indicated by the -70 in the part number)</li>
+  <li>Temperature rated for industrial use (indicated by the I in the part number)</li>
+</ul>
+
+<h3 id="the-ram">The RAM</h3>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2028.jpeg" alt="Micron D9PTJ ROM chip" /></p>
+
+<p>The system RAM appears to be made by Micron, model D9PTJ. I can’t find much online about this though, but will keep digging.</p>
+
+<h3 id="the-display">The display</h3>
+<p><img src="https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-02-13-inside-the-honda-civic-radio/teardown-pictures/honda-civic-radio-inside%20-%2029.jpeg" alt="Display assembly with Alps UGKZ2-E06A WiFi/Bluetooth chip" /></p>
+
+<p>The display piece is one assembly with all of the connections for digitizer, screen, and front buttons/lights all connecting to one PCB. That PCB connects,
+like described earlier, directly to the internal PCB with a push in connector that lacks a lock. It just pushes in when the entire unit is assembled. Nothing too crazy
+going on here. It is worth calling out the Alps combo WiFi/Bluetooth chip though, model UGKZ2-E06A. The WiFi aspect is important as it may be an attack vector that
+could be exploited, but not sure.</p>
+
+<h2 id="what-next">What Next</h2>
+<p>Now that we know what makes this thing tick, we may be able to have a better understanding of the software. Unfortunately, I did not see an obvious JTAG, Serial, or other debug interface/port. That doesnt mean that
+there isn’t one, though. My next steps are to research this hardware more, and figure out the exact function (and hopefully contents) of the SD Card. Interestingly, without it, the unit will not boot and displays “Preparing for update”
+on the boot screen, then freezes with error “000006” or something similar. I also want to keep digging around the software, and map the hidden factory menus.</p>
+
+<p>There are a lot more close up photos of the internals in full uncompressed format in a .zip file down below. Feel free to download and take a closer look.</p>
+
+<p>Thanks for reading, and stay tuned for more hopefully soon.</p>
+
+<p>.zip file with full-size pictures: <a href="https://drive.google.com/file/d/1hphRFdYSxYR2MdTMsTRx1IH1QSYL00zD/view?usp=sharing">honda-civic-radio-inside-full.zip</a></p>]]></content><author><name>Evan Horsley</name><email>evan@evanhorsley.com</email></author><category term="reverse-engineering" /><category term="automotive" /><category term="embedded-systems" /><summary type="html"><![CDATA[A hands-on teardown of the 2014 Honda Civic radio, documenting the internal PCBs, processor, flash memory, RAM, and display hardware while laying the groundwork for deeper reverse engineering of the software and SD card.]]></summary></entry><entry><title type="html">New Car and Reverse Engineering It</title><link href="http://0.0.0.0:4000/blog/2025/02/12/new-car-and-reverse-engineering-it/" rel="alternate" type="text/html" title="New Car and Reverse Engineering It" /><published>2025-02-12T14:55:00-05:00</published><updated>2025-02-12T14:55:00-05:00</updated><id>http://0.0.0.0:4000/blog/2025/02/12/new-car-and-reverse-engineering-it</id><content type="html" xml:base="http://0.0.0.0:4000/blog/2025/02/12/new-car-and-reverse-engineering-it/"><![CDATA[<!-- Content -->
+
+<p>I recently had the pleasure of acquiring a dream car of mine. The car is a manual. It comes in a sporty blue color, has a nice but subtle wing on the back. It has a nice black interior with red lined seats and carbon fiber accents on the dash.</p>
+
+<p>If you’d have guessed a Lamborghini or some other similar car, you would be very wrong. No, the car I’ve purchased is in fact a 2014 Honda Civic Si. That’s right, the last Civic with true VTEC.</p>
+
+<p><img src="https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/14q2/584476/2014-honda-civic-si-sedan-test-review-car-and-driver-photo-597226-s-original.jpg" alt="2014 Honda Civic Si" title="2014 Honda Civic Si" />
+<em>Photo credit: Car and Driver</em></p>
+
+<p>Now, there isn’t really anything about this car that I don’t love. It’s super practical, allowing me to haul around my wife and our son in his car seat, along with a stroller, groceries, two other people, and probably even more. It gets pretty good gas mileage (when I’m not totally mashing the throttle to experience that sweet VTEC), and cost of ownership is very low. The interior is very comfortable, and looks modern, for a now 11-year-old car.</p>
+
+<p>But, there is one thing that has haunted this car and other Honda models from this 2014-2016 (and even some later years too): lack of Apple CarPlay and Android Auto.</p>
+
+<p>You see, Honda promised many customers that these vehicles would eventually receive updates to enable this functionality. Hell, the <a href="http://web.archive.org/web/20150311070813/https://www.apple.com/ios/CarPlay/">Apple CarPlay website from early 2015</a> literally has a picture of a 9th gen. Honda Civic
+interior in it running CarPlay. <strong>bruh moment</strong>. Of course, many purchasers were rightfully frustrated because their headunit had been abandoned, never receiving a single software update.</p>
+
+<p>This lack of modern infotainment functionality really sucks. The 7 inch display in these vehicles is gorgeous in my opinion, and the center stack just looks amazing. Even the existing software on the unit is decent, and the size of the screen would handle CarPlay and Android Auto just fine.</p>
+
+<p>OK, so now you’ve heard my complaint. After much research, the general consensus is you have three options (currently):</p>
+
+<h3 id="option-1">Option 1</h3>
+
+<p>Your first option is to do the swap everyone is talking about: take the radio from a 2016 Honda CR-V, install it in the Civic, then update the radio software on the new unit. This is a good option
+if you want to maintain the factory look and feel, as well as other software options like trip computer and vehicle settings. This option costs anywhere between $200-$300 USD, depending on where you source 
+the radio, bracket, and faceplate (if needed). Even though this is a good solution, the CarPlay update was completely beta software, and a lot of people report stability issues. Plus, I personally do not
+like the look of the CRV radio as much with the big chunky buttons on it. Finally, no Android Auto with this one.</p>
+
+<h3 id="option-2">Option 2</h3>
+
+<p>Your second option is going to Crutchfield and purchasing whatever double DIN unit you want, plus all of the adapters needed to remain Lane Watch, factory controls, and more. This option is quite a bit pricier,
+in my case for the unit I looked at and all cables (iDataLink) around $500, not including the face plate I would need to make it work since the stock unit is not a double DIN size. This option
+is probably the best for the most modern functionality, and Crutchfield is a great brand that would be able to guide through any issues you run into. A new unit also likely means better sound output and EQ settings.</p>
+
+<h3 id="option-3">Option 3</h3>
+
+<p>Similar to option two, the third option is also an aftermarket radio, but more specifically the Joying unit advertised specifically for the 2014-2015 Honda Civic. This unit can potentially
+keep all factory functions (excluding trip meter control, as far as I know) such as Lane Watch, steering wheel, etc. I have heard from a handful of folks that have this unit that its a good option,
+especially with the large 9 inch screen. However, this unit is still almost $500, and the carbon fiber trim it comes with is different than the current OEM carbon fiber trim. I’m not sure about all of you,
+but that might just bug the crap out of me every time I look at it.</p>
+
+<h2 id="why-not-go-with-one-of-the-current-options">Why not go with one of the current options?</h2>
+
+<p>Well, I think the presented options are all generally pretty good. Option 2 is by far my favorite, and the one I would go with if I picked from one of them. But I still think the factory unit looks great,
+and would really like to see CarPlay somehow running on it. Where does that lead me?</p>
+
+<p>As a Software Engineer and a tinkerer, I like to figure out how things work, and see if I can make them work how I want. With that in mind, I’ve set out to see if I can reverse engineer the factory
+Honda 7 inch headunit to add Apple CarPlay, Android Auto, and potentially other functionality too, like connecting with an OBD device and displaying real time gauges.</p>
+
+<h2 id="where-to-start">Where to start?</h2>
+
+<p>I began doing a ton of research. Figuring out what the unit runs, what cars run it, see if anyone else has tried this, everything. I also ended up purchasing a unit of eBay so that I can tear it down
+and mess with it so I don’t mess up the one currently installed in my car.</p>
+
+<p>Here is some info I learned:</p>
+<ul>
+  <li>The unit runs Windows CE 7.0</li>
+  <li>The unit is manufactured by Mitsubishi Electric</li>
+  <li>It has a Renesas Electronics R8A77780 chip as its main processor</li>
+  <li>It has Micron Technology D9PTJ NAND chips for flash memory</li>
+  <li>There are lots of hidden diagnostic and factory menus (which I plan on mapping and exploring more)</li>
+  <li>No obvious serial or JTAG port that I can identify currently</li>
+</ul>
+
+<p>I have the radio I purchased powered up on a bench setup. I tore it down to take internal pictures, but need to get better ones. For now, I am poking around the software and am attempting to find a way 
+into the Windows CE environment.</p>
+
+<h2 id="how-would-carplayaa-run">How would CarPlay/AA run?</h2>
+
+<p>I have a few possible solutions to this.</p>
+
+<h3 id="solution-1">Solution 1</h3>
+
+<p>Every Honda equipped with this headunit has an HDMI port. Honda originally sold an adapter that connected to iPhone devices only via lightning that connected to the HDMI port and USB port on the vehicle.
+Then, you could download the HondaLink app, and purchase the navigation app as well. If you plugged in using this setup, and connected the phone via Bluetooth as well, you could run navigation and other apps
+on the headunit, powered by the phone itself. This worked while driving too, even though other HDMI display is not allowed while driving (probably some special HondaLink app thing).</p>
+
+<p>My theory is that the HDMI was used for
+video signals, the USB was used to send touch data from the headunit screen back to the device, and the bluetooth was for audio. If that theory is true, then we could possibly exploit this and “mimic” the behavior
+using a Raspberry Pi. If this could happen, then the Raspberry Pi could run CarPlay or AA on it, and anything else one might want. This would require understanding the setup completely though, and ensuring
+that you can do the same handshake the HondaLink app was doing to allow video display while driving. Unfortunately this version of the HondaLink app is no more, so reverse engineering the app itself is not possible.</p>
+
+<h3 id="solution-2">Solution 2</h3>
+
+<p>Since the unit runs Windows CE, it would theoretically be possible to gain access to the actual desktop environment. If you could, it may be possible to get a better understanding of the handshake process. Hell, the .exe files themselves
+could even be reverse engineering in most cases to see what steps they take to allow Solution 1 to work. It may be possible to load some custom software on the unit, even a new .exe with CarPlay or something. But this solution is less viable than 
+solution 1. However, gaining access to the .exe files would still be ideal for both solutions.</p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>Now that I have begun down this road, I can’t stop. So far there have not been any quick and easy wins like I was hoping. I initially was hoping for a JTAG, UART or serial port on board internally, but do not see one
+(at least not an obvious one). I’m going to keep digging though, and in my next post I hope to have lots of pictures and potentially video walking through the process.</p>
+
+<p>As with any project like this, community support is greatly appreciated. Honda essentially abandoned all owners with this headunit, and I would like to see to it that we can in some way get CarPlay/AA on the factory 7 inch unit. 
+I would love for others that have any information on this unit or any knowledge that may help this project along to chime in and assist. It would be <strong>greatly</strong> appreciated.</p>
+
+<p>Peace out!</p>]]></content><author><name>Evan Horsley</name><email>evan@evanhorsley.com</email></author><category term="reverse-engineering" /><category term="automotive" /><category term="embedded-systems" /><summary type="html"><![CDATA[After buying a 2014 Honda Civic Si, I set out to understand and reverse engineer the factory Windows CE head unit, exploring its hardware, software limitations, and whether modern features like CarPlay could realistically be made to work.]]></summary></entry></feed>

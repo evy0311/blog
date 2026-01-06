@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Evan’s Lab | Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further.</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Evan’s Lab" />
+<meta name="author" content="Evan Horsley" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further." />
+<meta property="og:description" content="Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further." />
+<link rel="canonical" href="http://0.0.0.0:4000/blog/" />
+<meta property="og:url" content="http://0.0.0.0:4000/blog/" />
+<meta property="og:site_name" content="Evan’s Lab" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Evan’s Lab" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Evan Horsley"},"description":"Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further.","headline":"Evan’s Lab","name":"Evan’s Lab","url":"http://0.0.0.0:4000/blog/"}</script>
+<!-- End Jekyll SEO tag -->
+<link id="main-stylesheet" rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/blog/feed.xml" title="Evan&apos;s Lab" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper">
+    <a class="site-title" rel="author" href="/blog/">Evan&#39;s Lab</a>
+  </div>
+</header>
+<main class="page-content" aria-label="Content">
+  <div class="wrapper">
+    <div class="home">
+
+
+
+  <ul class="post-list"><li>
+      <span class="post-meta">January 5, 2026</span>
+      <h3>
+        <a class="post-link" href="/blog/2026/01/05/further-analysis-of-the-honda-civic-head-unit-firmware-and-sd-card/">
+          Further Analysis of the Honda Civic Head Unit Firmware and SD Card (...and the Brick It Became... oops)
+        </a>
+      </h3>I dove deep into the Honda Civic head unit firmware and SD card to better understand how its Windows CE–based system is structured, how NK.bin really works, and where the actual OS lives. Along the way, I rebuilt flattened memory images, extracted hidden assets, uncovered dealer provisioning artifacts, and ultimately soft-bricked the unit while experimenting with the update process. This post documents the findings, the tooling, and the lessons learned from reverse-engineering a modern automotive infotainment system.</li><li>
+      <span class="post-meta">December 31, 2025</span>
+      <h3>
+        <a class="post-link" href="/blog/2025/12/31/more-honda-civic-headunit-reverse-engineering/">
+          More Honda Civic headunit reverse engineering
+        </a>
+      </h3>A deep dive into reverse-engineering a Honda Civic head unit: unlocking the SD card, extracting Windows CE assets, modifying the splash screen, and uncovering how these systems really boot.</li><li>
+      <span class="post-meta">October 4, 2025</span>
+      <h3>
+        <a class="post-link" href="/blog/2025/10/04/attempting-to-get-carplay-on-the-stock-headunit/">
+          Attempting to get CarPlay on the stock headunit
+        </a>
+      </h3>An experiment to bring CarPlay to a stock Honda head unit using its hidden HDMI input—leveraging a Raspberry Pi, reverse-engineering Honda’s phone projection system, and exploring touch, audio, and control limitations along the way.</li><li>
+      <span class="post-meta">February 13, 2025</span>
+      <h3>
+        <a class="post-link" href="/blog/2025/02/13/inside-the-honda-civic-radio/">
+          Inside the Honda Civic Radio
+        </a>
+      </h3>A hands-on teardown of the 2014 Honda Civic radio, documenting the internal PCBs, processor, flash memory, RAM, and display hardware while laying the groundwork for deeper reverse engineering of the software and SD card.</li><li>
+      <span class="post-meta">February 12, 2025</span>
+      <h3>
+        <a class="post-link" href="/blog/2025/02/12/new-car-and-reverse-engineering-it/">
+          New Car and Reverse Engineering It
+        </a>
+      </h3>After buying a 2014 Honda Civic Si, I set out to understand and reverse engineer the factory Windows CE head unit, exploring its hardware, software limitations, and whether modern features like CarPlay could realistically be made to work.</li></ul>
+
+  </div>
+  </div>
+</main><link id="fa-stylesheet" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
+
+<footer class="site-footer h-card">
+  <data class="u-url" value="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <ul class="contact-list">
+          <li class="p-name">Evan Horsley</li>
+          <li><a class="u-email" href="mailto:evan@evanhorsley.com">evan@evanhorsley.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p>Evan’s Lab is my hands-on playground for tinkering, reverse engineering, and tech exploration. From automotive hacks to software experiments, it’s where I take things apart, learn how they work, and push them further.
+</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li>
+        <a rel="me" href="https://github.com/evy0311" target="_blank" title="Github">
+            <span class="grey fa-brands fa-github fa-lg"></span>
+        </a>
+    </li><li>
+        <a rel="me" href="https://evanhorsley.com" target="_blank" title="Website">
+            <span class="grey fa-solid fa-globe fa-lg"></span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="http://0.0.0.0:4000/blog/feed.xml" target="_blank" title="Subscribe to syndication feed">
+            <svg class="svg-icon grey" viewbox="0 0 16 16">
+                <path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194
+          11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0
+          13.806c0-1.21.983-2.195 2.194-2.195zM10.606
+          16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"
+                />
+            </svg>
+        </a>
+    </li>
+</ul></div>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>

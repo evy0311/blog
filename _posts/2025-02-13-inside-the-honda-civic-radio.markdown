@@ -1,9 +1,13 @@
 ---
 layout: post
 title:  "Inside the Honda Civic Radio"
+excerpt: "A hands-on teardown of the 2014 Honda Civic radio, documenting the internal PCBs, processor, flash memory, RAM, and display hardware while laying the groundwork for deeper reverse engineering of the software and SD card."
 comments: true
 date:   2025-02-13 20:00:00 -0500
-categories: honda civic reverse engineering hack hacking car auto automotive
+categories:
+  - reverse-engineering
+  - automotive
+  - embedded-systems
 ---
 
 <!-- Content -->

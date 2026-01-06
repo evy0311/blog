@@ -1,9 +1,13 @@
 ---
 layout: post
 title:  "More Honda Civic headunit reverse engineering"
+excerpt: "A deep dive into reverse-engineering a Honda Civic head unit: unlocking the SD card, extracting Windows CE assets, modifying the splash screen, and uncovering how these systems really boot."
 comments: true
 date:   2025-12-31 08:00:00 -0500
-categories: honda civic reverse engineering hack hacking car auto automotive
+categories:
+  - reverse-engineering
+  - automotive
+  - embedded-systems
 ---
 
 <!-- Content -->
