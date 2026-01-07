@@ -237,6 +237,8 @@ Based on the behavior I’m seeing, it seems very likely that the unit is stuck 
 
 ![00000006 error code screen on soft bricked radio]({{ page.assets }}/Honda%20DA%20soft%20brick%202.jpeg)
 
+I will fix this at some point, but for now, it is back to researching the files themselves while I decide on the best path forward. 
+
 ## Educational Research Notice
 
 The following materials are provided solely for the purpose of technical analysis, reverse-engineering research, and interoperability study.
