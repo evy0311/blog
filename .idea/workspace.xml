@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d2d9d16-01ba-4c0d-89fe-6ba15b3ba8d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/pages.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/pages.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.jekyll-metadata" beforeDir="false" afterPath="$PROJECT_DIR$/.jekyll-metadata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/style.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +89,7 @@
       <workItem from="1763043184381" duration="7386000" />
       <workItem from="1767215931663" duration="2969000" />
       <workItem from="1767664959392" duration="13462000" />
-      <workItem from="1767724480937" duration="10253000" />
+      <workItem from="1767724480937" duration="35766000" />
     </task>
     <servers />
   </component>
