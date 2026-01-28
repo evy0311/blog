@@ -95,7 +95,7 @@ Edit: Here is the Github link with the SD card tools used to unlock and dump the
 
 ## Images
 
-![CarPlay Sneak Peak](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-12-31-more-honda-civic-headunit-reverse-engineering/pulseview.png)
+![Pulseview](https://github.com/evy0311/blog/raw/gh-pages/assets/images/2025-12-31-more-honda-civic-headunit-reverse-engineering/pulseview.png)
 
 ## Video
 
