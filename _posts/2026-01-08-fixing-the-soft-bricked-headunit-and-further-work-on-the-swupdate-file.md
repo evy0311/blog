@@ -211,7 +211,7 @@ In the next post, I want to dig into the second `NK.bin` we found inside the pac
 
 For now, the key takeaway is that logs plus disciplined byte level experiments are enough to break the process into understandable gates.
 
-This outcome was not entirely unexpected. From the start, this was never about successfully converting a CR V radio into a Civic radio. It was about understanding the update pipeline, the checks involved, and the boundaries enforced by the system.
+This outcome was not entirely unexpected. From the start, this was never about successfully installing the CR-V software update onto a Civic radio. It was about understanding the update pipeline, the checks involved, and the boundaries enforced by the system.
 
 Reaching the point where the headunit fully accepts an update package is a major milestone on its own. Everything after that point is deeper system territory, where hardware specific drivers and early boot configuration matter far more than container format correctness.
 
@@ -227,7 +227,7 @@ While examining the SD card contents used by the headunit, I discovered another 
 
 This ROM includes many of the same binaries we previously extracted from `SwUpdate.mef`, including `Diag.exe`, which contains much of the logic responsible for update detection and validation.
 
-Finding these files at rest on the SD card confirms that our reverse engineering work on the update package was targeting real, live system components, not just installer stubs.
+Finding these files at rest on the SD card confirms that our reverse engineering work on the update package was targeting real, live system components, not just installer stubs. This also means that, although I previously believed the SD card was NOT all of the OS files, it appears it actually has almost all of them on it. I just wasn't seeing them initially. This means we may be able to more easily make changes, like to the registry, for example, without having to go through the update process.
 
 ### Where things stand now
 
