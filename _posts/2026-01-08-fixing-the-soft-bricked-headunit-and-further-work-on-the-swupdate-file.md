@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Fixing the soft-bricked headunit, further work on the SwUpdate file, and then bricking it (again)"
-excerpt: ""
+excerpt: "After soft bricking a Honda Civic headunit while reverse engineering its update mechanism, I was able to recover it, reverse the firmware gating checks, and ultimately convince the system to accept a modified update package. Along the way, I mapped file validation, checksum enforcement, hardware and version checks, attempted a real update, and pushed the unit into a boot loop state. This post documents the process, the failures, and the insights gained while peeling back how Honda and Mitsubishi designed the SwUpdate pipeline."
 date: 2026-01-27 08:27:21 -0500
 categories: []
 tags: []
@@ -170,6 +170,8 @@ That was the milestone we needed.
 It proves that the gating checks are not a cryptographic signature over the whole update package (at least not at this stage of the process). Instead, the loader appears to use a sequence of targeted sanity checks and compatibility checks before it ever shows the menu.
 
 ![Real update screen](https://github.com/evy0311/blog/raw/gh-pages/assets/posts/2026-01-08-fixing-the-soft-bricked-headunit-and-further-work-on-the-swupdate-file/civic_real_update_screen.jpeg)
+
+I am willing to bet I may be the only person to have ever seen this screen appear on this model of Honda DA radio, shared with the 2014-2015 Civic, and similar year Fit, HRV, etc. Honda never released any official updates for these radios, other than maps updates. So this may be the first time one in the wild has seen this screen. Awesome!
 
 ### Attempting the update
 

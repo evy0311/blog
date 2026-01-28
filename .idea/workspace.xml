@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d2d9d16-01ba-4c0d-89fe-6ba15b3ba8d4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/posts/2026-01-08-fixing-the-soft-bricked-headunit-and-further-work-on-the-swupdate-file/civic_real_update_screen.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2025-12-31-more-honda-civic-headunit-reverse-engineering.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2025-12-31-more-honda-civic-headunit-reverse-engineering.markdown" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_posts/2026-01-08-fixing-the-soft-bricked-headunit-and-further-work-on-the-swupdate-file.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2026-01-08-fixing-the-soft-bricked-headunit-and-further-work-on-the-swupdate-file.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +92,7 @@
       <workItem from="1768354983141" duration="7292000" />
       <workItem from="1768524901203" duration="1206000" />
       <workItem from="1768937763196" duration="559000" />
-      <workItem from="1769145512942" duration="6139000" />
+      <workItem from="1769145512942" duration="6364000" />
     </task>
     <servers />
   </component>
