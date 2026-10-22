@@ -73,3 +73,7 @@ google_analytics: G-KVDHJRBT2R
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Keep research notes in the repository without generating site pages.
+exclude:
+  - _notes/

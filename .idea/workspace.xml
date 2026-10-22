@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0d2d9d16-01ba-4c0d-89fe-6ba15b3ba8d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2026-01-08-fixing-the-soft-bricked-headunit-and-further-work-on-the-swupdate-file.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2026-01-08-fixing-the-soft-bricked-headunit-and-further-work-on-the-swupdate-file.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +91,11 @@
       <workItem from="1768354983141" duration="7292000" />
       <workItem from="1768524901203" duration="1206000" />
       <workItem from="1768937763196" duration="559000" />
-      <workItem from="1769145512942" duration="6801000" />
+      <workItem from="1769145512942" duration="22230000" />
+      <workItem from="1769715206634" duration="11370000" />
+      <workItem from="1770777564978" duration="55000" />
+      <workItem from="1771346108127" duration="554000" />
+      <workItem from="1772133662153" duration="599000" />
     </task>
     <servers />
   </component>
