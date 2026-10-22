@@ -3,7 +3,7 @@ layout: post
 title: "Recovering the Honda Civic headunit (for real this time)"
 excerpt: "The Civic headunit is working again. Getting there meant fixing a misleading SD capture, figuring out what the CR-V update actually replaced, restoring the original Civic updater without breaking its integrity checks, and using that updater to clear the persistent update state. Here's what worked, what didn't, and what this tells us about the boot process."
 date: 2026-10-21
-published: false
+published: true
 comments: true
 assets: /blog/assets/posts/2026-10-21-recovering-the-honda-civic-headunit-for-real-this-time
 categories:
@@ -138,7 +138,7 @@ The full pre-update image also restored old backup/configuration contents. We kn
 
 That message looked familiar from the bitmap assets found earlier in the project. Sure enough, the exact message is in a compressed SD resource package with a header at `0x24F40000` and gzip data beginning at `0x24F40028`.
 
-The Civic updater reads those resources through `NTelopDraw`. Following the references back led to the display monitor's USB status handling. One confirmed path constructs a filename ending in `Swupdate.mef`, attempts to open it, and selects the USB-error status when opening fails. Other USB errors share the same panel, so the wording alone does not tell us which operation failed.
+The Civic updater reads those resources through `NTelopDraw`. Following the references back led to the display monitor's USB status handling. One confirmed path constructs a filename ending in `Swupdate.mef`, attempts to open it, and selects the USB-error status when opening fails. Other USB errors share the same panel, so the wording alone does not tell us which operation failed. This is expected though, as the flash drive with that file for updating is currently not present.
 
 It did give us a much more useful environment to work in. We had restored the Civic updater far enough to display and handle an error. It still wouldn't return to the radio, even after removing power.
 
