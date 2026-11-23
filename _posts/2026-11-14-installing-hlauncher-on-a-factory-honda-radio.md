@@ -70,7 +70,7 @@ In this setup, the dongle plugs into the **Raspberry Pi**. HLauncher talks to it
 
 ## 1. Flash HLauncher to the microSD card
 
-1. Go to [HLauncher Releases](https://github.com/evy0311/HLauncher/releases) and download the **Pi 4 disk image** named like `HLauncher-VERSION-pi4.img.xz`. Download the checksum from the same release and [verify the image before flashing](https://github.com/evy0311/HLauncher/blob/main/docs/install.md#download-and-verify). The GitHub source archive and the `.hlu` update file won't create a bootable card.
+1. Go to [HLauncher Releases](https://github.com/evy0311/HLauncher/releases) and download the **Pi 4 disk image** named like `HLauncher-VERSION-pi4.img.xz`.
 2. Insert the microSD card into your computer's card slot or connect it using your card reader. Open [Raspberry Pi Imager](https://www.raspberrypi.com/software/) on your computer. Choose **Raspberry Pi 4**, then **Use Custom** for the operating system and select the downloaded `.img.xz` file. You can also use [balenaEtcher](https://etcher.balena.io/) and choose **Flash from file**.
 3. Select your microSD card. **Flashing erases the selected card**, so double-check the drive. If Imager offers OS customisation, skip it. Write the image, let verification finish, then eject the card.
 
